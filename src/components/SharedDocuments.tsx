@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FileText, FileSpreadsheet, FileImage, FilePlus, Utensils, FileBox } from 'lucide-react';
+import { FileText, FileSpreadsheet, FileImage, FilePlus, Utensils, FileBox, HelpCircle, UserPlus } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 const documents = [
@@ -11,6 +11,8 @@ const documents = [
   { id: 4, name: 'Product Roadmap', type: 'document', path: '/documents/product-roadmap' },
   { id: 5, name: 'Marketing Assets', type: 'image', path: '/documents/marketing-assets' },
   { id: 6, name: 'Project Proposal Template', type: 'document', path: '/documents/project-template' },
+  { id: 7, name: 'IT FAQ', type: 'faq', path: '/documents/it-faq' },
+  { id: 8, name: 'New Employee Guide', type: 'guide', path: '/documents/new-employee-guide' },
 ];
 
 const dailyTools = [
@@ -28,6 +30,10 @@ const getIcon = (type: string) => {
       return <Utensils className="h-4 w-4 mr-2 text-orange-500" />;
     case 'leave':
       return <FileBox className="h-4 w-4 mr-2 text-wisesemi" />;
+    case 'faq':
+      return <HelpCircle className="h-4 w-4 mr-2 text-purple-500" />;
+    case 'guide':
+      return <UserPlus className="h-4 w-4 mr-2 text-teal-500" />;
     default:
       return <FileText className="h-4 w-4 mr-2 text-wisesemi" />;
   }

@@ -48,6 +48,20 @@ const documentData = {
     author: 'Matthew Robinson',
     content: '# Project Proposal Template\n\n## Executive Summary\n\n[Brief overview of the project and its value to the organization]\n\n## Project Objectives\n\n- [Objective 1]\n- [Objective 2]\n- [Objective 3]\n\n## Scope\n\n[Define what is included and excluded from the project]\n\n## Timeline\n\n- Planning Phase: [Start Date] - [End Date]\n- Development Phase: [Start Date] - [End Date]\n- Testing Phase: [Start Date] - [End Date]\n- Deployment Phase: [Start Date] - [End Date]\n\n## Budget\n\n[Detailed breakdown of estimated costs]\n\n## Resources\n\n[List of team members, equipment, and other resources needed]\n\n## Success Criteria\n\n[Measurable criteria that will be used to determine project success]\n\n## Risk Assessment\n\n[Identification of potential risks and mitigation strategies]',
   },
+  'it-faq': {
+    name: 'IT FAQ',
+    type: 'faq',
+    lastUpdated: '2025-04-05',
+    author: 'IT Department',
+    content: '# IT Frequently Asked Questions\n\n## Network Access\n\n### How do I connect to the company WiFi?\n\nSelect the "WiseSemi-Secure" network and enter your employee ID as the username and your network password.\n\n### I forgot my network password. What should I do?\n\nVisit the IT Help Desk portal or contact the IT department at it.support@wisesemi.com.\n\n## Hardware Support\n\n### How do I request new equipment?\n\nSubmit a request through the IT Help Desk portal with your manager\'s approval.\n\n### What should I do if my laptop is not working properly?\n\nRestart your laptop first. If the issue persists, contact the IT Help Desk at extension 2500.\n\n## Software\n\n### How do I install company-approved software?\n\nAccess the Software Center from your desktop and select from available applications.\n\n### How do I request access to specific software?\n\nSubmit a software access request form through the IT Help Desk portal.\n\n## Security\n\n### How often should I change my password?\n\nPasswords must be changed every 90 days. You\'ll receive email reminders starting 14 days before expiration.\n\n### What should I do if I suspect a security breach?\n\nDisconnect your device from the network and immediately contact the IT Security team at security@wisesemi.com or extension 2525.\n\n## Remote Access\n\n### How do I access company resources when working remotely?\n\nUse the VPN client installed on your laptop. Instructions for connection are available on the IT portal.\n\n### I\'m having trouble connecting to VPN. What should I do?\n\nEnsure you have a stable internet connection. If issues persist, contact the IT Help Desk.',
+  },
+  'new-employee-guide': {
+    name: 'New Employee Guide',
+    type: 'guide',
+    lastUpdated: '2025-03-25',
+    author: 'HR Department',
+    content: '# Welcome to WiseSemi!\n\n## Your First Day\n\n### What to Bring\n\n- Government-issued ID for badge creation\n- Direct deposit information for payroll setup\n- Any employment documents not yet submitted\n\n### Schedule\n\n- 9:00 AM: Meet with HR for orientation\n- 10:30 AM: IT setup and systems overview\n- 12:00 PM: Team lunch with your department\n- 2:00 PM: Meet with your manager\n- 3:30 PM: Company tour\n\n## First Week Checklist\n\n- [ ] Complete required HR paperwork\n- [ ] Set up workstation and accounts\n- [ ] Review department goals and projects\n- [ ] Schedule 1:1 meetings with key team members\n- [ ] Complete mandatory training modules\n\n## Important Resources\n\n### Company Tools\n\n- Email: Outlook Web Access (owa.wisesemi.com)\n- Chat: Microsoft Teams\n- Project Management: Asana\n- Document Sharing: SharePoint\n\n### Key Contacts\n\n- HR Partner: Lisa Johnson (ext. 3150)\n- IT Support: help@wisesemi.com (ext. 2500)\n- Office Manager: David Chen (ext. 3100)\n\n## Company Culture\n\n### Core Values\n\n- Innovation: We embrace new ideas and challenge convention\n- Excellence: We strive for the highest quality in everything we do\n- Collaboration: We achieve more by working together\n- Integrity: We do what\'s right, even when it\'s difficult\n\n### Work-Life Balance\n\nWe encourage a healthy work-life balance and offer flexible working arrangements when possible. Discuss specific needs with your manager.\n\n### Professional Development\n\nWe support ongoing learning and growth. Talk to your manager about creating a development plan during your first month.',
+  }
 };
 
 const DocumentPage = () => {
@@ -77,6 +91,15 @@ const DocumentPage = () => {
             return <h1 key={index} className="text-2xl font-bold mb-4">{line.substring(2)}</h1>;
           } else if (line.startsWith('## ')) {
             return <h2 key={index} className="text-xl font-semibold mt-6 mb-3">{line.substring(3)}</h2>;
+          } else if (line.startsWith('### ')) {
+            return <h3 key={index} className="text-lg font-semibold mt-4 mb-2">{line.substring(4)}</h3>;
+          } else if (line.startsWith('- [ ] ')) {
+            return (
+              <div key={index} className="flex items-start ml-6 mb-1">
+                <div className="border border-gray-300 rounded w-4 h-4 mt-1 mr-2"></div>
+                <span>{line.substring(6)}</span>
+              </div>
+            );
           } else if (line.startsWith('- ')) {
             return <li key={index} className="ml-6 mb-1">{line.substring(2)}</li>;
           } else if (line === '') {

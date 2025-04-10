@@ -12,7 +12,7 @@ const Header = () => {
             alt="WiseSemi Logo" 
             className="h-10 mr-3" 
           />
-          <h1 className="text-white text-2xl font-bold">Company Intranet</h1>
+          <h1 className="text-white text-2xl font-bold">MyWiseSemi</h1>
         </div>
         <div className="flex items-center space-x-4">
           <div className="relative">
