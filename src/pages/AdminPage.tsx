@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import Header from '@/components/Header';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -20,10 +19,12 @@ import {
   NavigationMenuItem, 
   NavigationMenuList, 
   NavigationMenuTrigger,
-  navigationMenuTriggerStyle
 } from '@/components/ui/navigation-menu';
-import { FileText, Save, Calendar, Lock, Megaphone, User } from 'lucide-react';
+import { FileText, Save, Calendar, Lock, Megaphone } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { announcementsApi, eventsApi } from '@/services/api';
+import { Announcement, Event } from '@/types';
 
 const documentCategories = [
   { 
@@ -89,38 +90,6 @@ This is a sample markdown document for demonstration purposes.
 Thank you for reading!
 `;
 
-const announcements = [
-  {
-    id: 'new-policy',
-    title: 'New Company Policy Update',
-    description: 'Please review the updated remote work policy before the end of the month.',
-    date: '2025-04-05',
-    important: true,
-  },
-  {
-    id: 'all-hands',
-    title: 'Quarterly All-Hands Meeting',
-    description: 'Join us for our Q2 all-hands meeting next Friday at 2pm in the main conference room.',
-    date: '2025-04-15',
-    important: true,
-  },
-  {
-    id: 'it-maintenance',
-    title: 'IT System Maintenance',
-    description: 'The IT systems will be down for maintenance this Saturday from 10pm to 2am.',
-    date: '2025-04-12',
-    important: false,
-  }
-];
-
-const events = [
-  { id: 'product-launch', title: 'Product Launch Meeting', date: '2025-04-12', time: '10:00 AM', location: 'Conference Room A' },
-  { id: 'team-building', title: 'Team Building Event', date: '2025-04-15', time: '2:00 PM', location: 'Central Park' },
-  { id: 'planning', title: 'Fiscal Year Planning', date: '2025-04-20', time: '9:00 AM', location: 'Board Room' },
-  { id: 'training', title: 'Employee Training', date: '2025-04-22', time: '11:00 AM', location: 'Training Center' },
-];
-
-// The password is "admin123" - in a real app, this would be securely stored and verified
 const ADMIN_PASSWORD = "admin123";
 
 const AdminPage = () => {
@@ -131,21 +100,66 @@ const AdminPage = () => {
   const [documentContent, setDocumentContent] = useState(dummyMarkdown);
   const [selectedTab, setSelectedTab] = useState('documents');
   
-  // Announcements state
-  const [selectedAnnouncement, setSelectedAnnouncement] = useState('');
-  const [announcementTitle, setAnnouncementTitle] = useState('');
-  const [announcementDescription, setAnnouncementDescription] = useState('');
-  const [announcementDate, setAnnouncementDate] = useState('');
-  const [announcementImportant, setAnnouncementImportant] = useState(false);
-  
-  // Events state
-  const [selectedEvent, setSelectedEvent] = useState('');
-  const [eventTitle, setEventTitle] = useState('');
-  const [eventDate, setEventDate] = useState('');
-  const [eventTime, setEventTime] = useState('');
-  const [eventLocation, setEventLocation] = useState('');
-  
   const { toast } = useToast();
+  const queryClient = useQueryClient();
+
+  const { data: announcements = [] } = useQuery({
+    queryKey: ['announcements'],
+    queryFn: announcementsApi.getAll,
+    enabled: isAuthenticated && selectedTab === 'announcements'
+  });
+  
+  const { data: events = [] } = useQuery({
+    queryKey: ['events'],
+    queryFn: eventsApi.getAll,
+    enabled: isAuthenticated && selectedTab === 'events'
+  });
+
+  const createAnnouncementMutation = useMutation({
+    mutationFn: (announcement: Omit<Announcement, 'id'>) => announcementsApi.create(announcement),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['announcements'] });
+      toast({
+        title: "Announcement created",
+        description: `${announcementTitle} has been successfully created`,
+      });
+    }
+  });
+  
+  const updateAnnouncementMutation = useMutation({
+    mutationFn: ({ id, data }: { id: number, data: Partial<Announcement> }) => 
+      announcementsApi.update(id, data),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['announcements'] });
+      toast({
+        title: "Announcement updated",
+        description: `${announcementTitle} has been successfully updated`,
+      });
+    }
+  });
+
+  const createEventMutation = useMutation({
+    mutationFn: (event: Omit<Event, 'id'>) => eventsApi.create(event),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['events'] });
+      toast({
+        title: "Event created",
+        description: `${eventTitle} has been successfully created`,
+      });
+    }
+  });
+  
+  const updateEventMutation = useMutation({
+    mutationFn: ({ id, data }: { id: number, data: Partial<Event> }) => 
+      eventsApi.update(id, data),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['events'] });
+      toast({
+        title: "Event updated",
+        description: `${eventTitle} has been successfully updated`,
+      });
+    }
+  });
 
   const handleLogin = () => {
     if (password === ADMIN_PASSWORD) {
@@ -170,44 +184,48 @@ const AdminPage = () => {
 
   const handleDocumentChange = (value: string) => {
     setSelectedDocument(value);
-    // In a real app, this would fetch the document content from the backend
     setDocumentContent(dummyMarkdown);
   };
 
   const handleAnnouncementChange = (value: string) => {
     setSelectedAnnouncement(value);
-    const announcement = announcements.find(a => a.id === value);
+    if (value === 'new') {
+      setAnnouncementTitle('');
+      setAnnouncementDescription('');
+      setAnnouncementDate('');
+      setAnnouncementImportant(false);
+      return;
+    }
+    
+    const announcement = announcements.find(a => a.id.toString() === value);
     if (announcement) {
       setAnnouncementTitle(announcement.title);
       setAnnouncementDescription(announcement.description);
       setAnnouncementDate(announcement.date);
       setAnnouncementImportant(announcement.important);
-    } else {
-      setAnnouncementTitle('');
-      setAnnouncementDescription('');
-      setAnnouncementDate('');
-      setAnnouncementImportant(false);
     }
   };
 
   const handleEventChange = (value: string) => {
     setSelectedEvent(value);
-    const event = events.find(e => e.id === value);
+    if (value === 'new') {
+      setEventTitle('');
+      setEventDate('');
+      setEventTime('');
+      setEventLocation('');
+      return;
+    }
+    
+    const event = events.find(e => e.id.toString() === value);
     if (event) {
       setEventTitle(event.title);
       setEventDate(event.date);
       setEventTime(event.time);
       setEventLocation(event.location);
-    } else {
-      setEventTitle('');
-      setEventDate('');
-      setEventTime('');
-      setEventLocation('');
     }
   };
 
   const handleSaveDocument = () => {
-    // In a real app, this would save the document content to the backend
     toast({
       title: "Document saved",
       description: `${selectedDocument} has been successfully updated`,
@@ -215,19 +233,41 @@ const AdminPage = () => {
   };
 
   const handleSaveAnnouncement = () => {
-    // In a real app, this would save the announcement to the backend
-    toast({
-      title: "Announcement saved",
-      description: `${announcementTitle} has been successfully updated`,
-    });
+    const announcementData = {
+      title: announcementTitle,
+      description: announcementDescription,
+      date: announcementDate,
+      important: announcementImportant
+    };
+    
+    if (selectedAnnouncement === 'new') {
+      createAnnouncementMutation.mutate(announcementData);
+    } else {
+      const announcementId = parseInt(selectedAnnouncement);
+      updateAnnouncementMutation.mutate({ 
+        id: announcementId, 
+        data: announcementData 
+      });
+    }
   };
 
   const handleSaveEvent = () => {
-    // In a real app, this would save the event to the backend
-    toast({
-      title: "Event saved",
-      description: `${eventTitle} has been successfully updated`,
-    });
+    const eventData = {
+      title: eventTitle,
+      date: eventDate,
+      time: eventTime,
+      location: eventLocation
+    };
+    
+    if (selectedEvent === 'new') {
+      createEventMutation.mutate(eventData);
+    } else {
+      const eventId = parseInt(selectedEvent);
+      updateEventMutation.mutate({ 
+        id: eventId, 
+        data: eventData 
+      });
+    }
   };
 
   const filteredDocuments = documentCategories.find(
@@ -440,7 +480,7 @@ const AdminPage = () => {
                         </SelectTrigger>
                         <SelectContent>
                           {announcements.map((announcement) => (
-                            <SelectItem key={announcement.id} value={announcement.id}>
+                            <SelectItem key={announcement.id} value={announcement.id.toString()}>
                               {announcement.title}
                             </SelectItem>
                           ))}
@@ -508,9 +548,12 @@ const AdminPage = () => {
                         <Button 
                           onClick={handleSaveAnnouncement} 
                           className="bg-wisesemi hover:bg-wisesemi-dark"
+                          disabled={createAnnouncementMutation.isPending || updateAnnouncementMutation.isPending}
                         >
                           <Save className="mr-2 h-4 w-4" />
-                          Save Announcement
+                          {createAnnouncementMutation.isPending || updateAnnouncementMutation.isPending 
+                            ? 'Saving...' 
+                            : 'Save Announcement'}
                         </Button>
                       </div>
                     </div>
@@ -539,7 +582,7 @@ const AdminPage = () => {
                         </SelectTrigger>
                         <SelectContent>
                           {events.map((event) => (
-                            <SelectItem key={event.id} value={event.id}>
+                            <SelectItem key={event.id} value={event.id.toString()}>
                               {event.title}
                             </SelectItem>
                           ))}
@@ -606,9 +649,12 @@ const AdminPage = () => {
                         <Button 
                           onClick={handleSaveEvent} 
                           className="bg-wisesemi hover:bg-wisesemi-dark"
+                          disabled={createEventMutation.isPending || updateEventMutation.isPending}
                         >
                           <Save className="mr-2 h-4 w-4" />
-                          Save Event
+                          {createEventMutation.isPending || updateEventMutation.isPending 
+                            ? 'Saving...' 
+                            : 'Save Event'}
                         </Button>
                       </div>
                     </div>

@@ -3,41 +3,47 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Folder } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-
-const departments = [
-  { id: 1, name: 'CEO Office', path: '/departments/ceo-office' },
-  { id: 2, name: 'Human Resources', path: '/departments/hr' },
-  { id: 3, name: 'Finance', path: '/departments/finance' },
-  { id: 4, name: 'Marketing', path: '/departments/marketing' },
-  { id: 5, name: 'RD1', path: '/departments/rd1' },
-  { id: 6, name: 'RD2', path: '/departments/rd2' },
-  { id: 7, name: 'Customer Support', path: '/departments/support' },
-  { id: 8, name: 'Sales', path: '/departments/sales' },
-  { id: 9, name: 'Operations', path: '/departments/operations' },
-];
+import { useQuery } from '@tanstack/react-query';
+import { departmentsApi } from '@/services/api';
+import { Department } from '@/types';
 
 const DepartmentsList = () => {
+  const { data: departments = [], isLoading, error } = useQuery({
+    queryKey: ['departments'],
+    queryFn: departmentsApi.getAll,
+  });
+
   return (
     <Card className="h-full">
       <CardHeader className="pb-2">
         <CardTitle className="text-lg font-semibold text-wisesemi-dark">Departments</CardTitle>
       </CardHeader>
       <CardContent>
-        <ul className="space-y-2">
-          {departments.map((department) => (
-            <li key={department.id}>
-              <Link 
-                to={department.path}
-                className="flex items-center p-2 rounded-md hover:bg-wisesemi-light transition-colors group"
-              >
-                <Folder className="h-4 w-4 mr-2 text-wisesemi-dark group-hover:text-wisesemi" />
-                <span className="text-gray-700 group-hover:text-wisesemi-dark">
-                  {department.name}
-                </span>
-              </Link>
-            </li>
-          ))}
-        </ul>
+        {isLoading ? (
+          <div className="flex justify-center py-4">
+            <div className="animate-pulse h-32 w-full bg-gray-200 rounded-md"></div>
+          </div>
+        ) : error ? (
+          <div className="text-red-500 text-center py-4">
+            Failed to load departments
+          </div>
+        ) : (
+          <ul className="space-y-2">
+            {departments.map((department: Department) => (
+              <li key={department.id}>
+                <Link 
+                  to={department.path}
+                  className="flex items-center p-2 rounded-md hover:bg-wisesemi-light transition-colors group"
+                >
+                  <Folder className="h-4 w-4 mr-2 text-wisesemi-dark group-hover:text-wisesemi" />
+                  <span className="text-gray-700 group-hover:text-wisesemi-dark">
+                    {department.name}
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        )}
       </CardContent>
     </Card>
   );
