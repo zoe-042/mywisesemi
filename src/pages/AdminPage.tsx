@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import Header from '@/components/Header';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -99,6 +100,20 @@ const AdminPage = () => {
   const [selectedDocument, setSelectedDocument] = useState('');
   const [documentContent, setDocumentContent] = useState(dummyMarkdown);
   const [selectedTab, setSelectedTab] = useState('documents');
+  
+  // Add missing state variables for announcements
+  const [selectedAnnouncement, setSelectedAnnouncement] = useState('');
+  const [announcementTitle, setAnnouncementTitle] = useState('');
+  const [announcementDescription, setAnnouncementDescription] = useState('');
+  const [announcementDate, setAnnouncementDate] = useState('');
+  const [announcementImportant, setAnnouncementImportant] = useState(false);
+  
+  // Add missing state variables for events
+  const [selectedEvent, setSelectedEvent] = useState('');
+  const [eventTitle, setEventTitle] = useState('');
+  const [eventDate, setEventDate] = useState('');
+  const [eventTime, setEventTime] = useState('');
+  const [eventLocation, setEventLocation] = useState('');
   
   const { toast } = useToast();
   const queryClient = useQueryClient();
