@@ -1,5 +1,4 @@
-
-import React from 'react';
+import React, { useState } from 'react';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
@@ -10,6 +9,17 @@ import { Announcement } from '@/types';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { announcementsApi } from '@/services/api';
 import { useToast } from '@/hooks/use-toast';
+import { 
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
 
 interface AnnouncementEditorProps {
   selectedAnnouncement: string;
@@ -36,6 +46,7 @@ const AnnouncementEditor = ({
 }: AnnouncementEditorProps) => {
   const { toast } = useToast();
   const queryClient = useQueryClient();
+  const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
 
   const createAnnouncementMutation = useMutation({
     mutationFn: (announcement: Omit<Announcement, 'id'>) => announcementsApi.create(announcement),
@@ -68,6 +79,7 @@ const AnnouncementEditor = ({
         title: "Announcement deleted",
         description: `The announcement has been successfully deleted`,
       });
+      setIsDeleteDialogOpen(false);
     }
   });
 
@@ -151,14 +163,32 @@ const AnnouncementEditor = ({
 
           <div className="flex justify-between">
             {selectedAnnouncement !== 'new' && (
-              <Button 
-                onClick={handleDeleteAnnouncement} 
-                variant="destructive"
-                disabled={deleteAnnouncementMutation.isPending}
-              >
-                <Trash2 className="mr-2 h-4 w-4" />
-                {deleteAnnouncementMutation.isPending ? 'Deleting...' : 'Delete Announcement'}
-              </Button>
+              <AlertDialog open={isDeleteDialogOpen} onOpenChange={setIsDeleteDialogOpen}>
+                <AlertDialogTrigger asChild>
+                  <Button 
+                    variant="destructive"
+                    disabled={deleteAnnouncementMutation.isPending}
+                  >
+                    <Trash2 className="mr-2 h-4 w-4" />
+                    {deleteAnnouncementMutation.isPending ? 'Deleting...' : 'Delete Announcement'}
+                  </Button>
+                </AlertDialogTrigger>
+                <AlertDialogContent>
+                  <AlertDialogHeader>
+                    <AlertDialogTitle>Are you sure?</AlertDialogTitle>
+                    <AlertDialogDescription>
+                      This action cannot be undone. This will permanently delete the announcement
+                      "{announcementTitle}" from the system.
+                    </AlertDialogDescription>
+                  </AlertDialogHeader>
+                  <AlertDialogFooter>
+                    <AlertDialogCancel>Cancel</AlertDialogCancel>
+                    <AlertDialogAction onClick={handleDeleteAnnouncement} className="bg-destructive text-destructive-foreground">
+                      Delete
+                    </AlertDialogAction>
+                  </AlertDialogFooter>
+                </AlertDialogContent>
+              </AlertDialog>
             )}
             <Button 
               onClick={handleSaveAnnouncement} 

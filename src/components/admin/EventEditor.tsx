@@ -1,5 +1,4 @@
-
-import React from 'react';
+import React, { useState } from 'react';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
@@ -9,6 +8,17 @@ import { Event } from '@/types';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { eventsApi } from '@/services/api';
 import { useToast } from '@/hooks/use-toast';
+import { 
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
 
 interface EventEditorProps {
   selectedEvent: string;
@@ -35,6 +45,7 @@ const EventEditor = ({
 }: EventEditorProps) => {
   const { toast } = useToast();
   const queryClient = useQueryClient();
+  const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
 
   const createEventMutation = useMutation({
     mutationFn: (event: Omit<Event, 'id'>) => eventsApi.create(event),
@@ -67,6 +78,7 @@ const EventEditor = ({
         title: "Event deleted",
         description: `The event has been successfully deleted`,
       });
+      setIsDeleteDialogOpen(false);
     }
   });
 
@@ -149,14 +161,32 @@ const EventEditor = ({
 
           <div className="flex justify-between">
             {selectedEvent !== 'new' && (
-              <Button 
-                onClick={handleDeleteEvent} 
-                variant="destructive"
-                disabled={deleteEventMutation.isPending}
-              >
-                <Trash2 className="mr-2 h-4 w-4" />
-                {deleteEventMutation.isPending ? 'Deleting...' : 'Delete Event'}
-              </Button>
+              <AlertDialog open={isDeleteDialogOpen} onOpenChange={setIsDeleteDialogOpen}>
+                <AlertDialogTrigger asChild>
+                  <Button 
+                    variant="destructive"
+                    disabled={deleteEventMutation.isPending}
+                  >
+                    <Trash2 className="mr-2 h-4 w-4" />
+                    {deleteEventMutation.isPending ? 'Deleting...' : 'Delete Event'}
+                  </Button>
+                </AlertDialogTrigger>
+                <AlertDialogContent>
+                  <AlertDialogHeader>
+                    <AlertDialogTitle>Are you sure?</AlertDialogTitle>
+                    <AlertDialogDescription>
+                      This action cannot be undone. This will permanently delete the event
+                      "{eventTitle}" from the system.
+                    </AlertDialogDescription>
+                  </AlertDialogHeader>
+                  <AlertDialogFooter>
+                    <AlertDialogCancel>Cancel</AlertDialogCancel>
+                    <AlertDialogAction onClick={handleDeleteEvent} className="bg-destructive text-destructive-foreground">
+                      Delete
+                    </AlertDialogAction>
+                  </AlertDialogFooter>
+                </AlertDialogContent>
+              </AlertDialog>
             )}
             <Button 
               onClick={handleSaveEvent} 
