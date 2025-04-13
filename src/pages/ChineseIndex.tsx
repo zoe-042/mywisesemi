@@ -23,36 +23,28 @@ const ChineseIndex = () => {
           {/* Left Column - Departments, ISO 9001 */}
           <div className="flex flex-col space-y-6">
             <DepartmentsList />
-            <div className="bg-white p-4 rounded-lg shadow">
-              <h2 className="text-xl font-semibold text-wisesemi-dark mb-4">ISO 9001</h2>
-              <ISODocuments />
-            </div>
+            <ISODocuments />
           </div>
           
           {/* Middle Column - Announcements and Calendar */}
           <div className="flex flex-col space-y-6">
-            <div className="flex-1 bg-white p-4 rounded-lg shadow">
-              <h2 className="text-xl font-semibold text-wisesemi-dark mb-4">公告</h2>
+            <div className="flex-1">
               <Announcements />
             </div>
-            <div className="flex-1 bg-white p-4 rounded-lg shadow">
-              <h2 className="text-xl font-semibold text-wisesemi-dark mb-4">活動日曆</h2>
+            <div className="flex-1">
               <EventCalendar />
             </div>
           </div>
           
           {/* Right Column - Calendar, Daily Tools and Shared Documents */}
           <div className="flex flex-col space-y-6">
-            <div className="bg-white p-4 rounded-lg shadow">
-              <h2 className="text-xl font-semibold text-wisesemi-dark mb-4">日曆</h2>
+            <div>
               <TopCalendar />
             </div>
-            <div className="bg-white p-4 rounded-lg shadow">
-              <h2 className="text-xl font-semibold text-wisesemi-dark mb-4">日常工具</h2>
+            <div>
               <DailyTools />
             </div>
-            <div className="flex-1 bg-white p-4 rounded-lg shadow">
-              <h2 className="text-xl font-semibold text-wisesemi-dark mb-4">共享文件</h2>
+            <div className="flex-1">
               <SharedDocuments />
             </div>
           </div>
