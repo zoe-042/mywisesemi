@@ -50,8 +50,8 @@ const translations: Translations = {
     'zh': '共享文件',
   },
   'home.iso': {
-    'en': 'ISO 9001',
-    'zh': 'ISO 9001',
+    'en': 'ISO 9001:2015',
+    'zh': 'ISO 9001:2015',
   },
   'home.daily_tools': {
     'en': 'Daily Tools',
