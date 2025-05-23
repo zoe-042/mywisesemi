@@ -34,12 +34,6 @@ const Header = () => {
               3
             </span>
           </div>
-          <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center text-white font-semibold">
-              JD
-            </div>
-            <span className="text-white hidden md:inline">John Doe</span>
-          </div>
         </div>
       </div>
     </header>

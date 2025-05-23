@@ -1,11 +1,7 @@
 
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { Utensils, FileBox, CalendarDays } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { useQuery } from '@tanstack/react-query';
-import { dailyToolsApi } from '@/services/api';
-import { DailyTool } from '@/types';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const getIcon = (type: string) => {
@@ -20,12 +16,22 @@ const getIcon = (type: string) => {
 };
 
 const DailyTools = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   
-  const { data: dailyTools = [], isLoading } = useQuery({
-    queryKey: ['dailyTools'],
-    queryFn: dailyToolsApi.getAll
-  });
+  const dailyTools = [
+    {
+      id: 1,
+      name: language === 'zh' ? '午餐訂購' : 'Lunch Box Selection',
+      type: 'lunch',
+      path: 'https://www.dinbendon.net/do/'
+    },
+    {
+      id: 2,
+      name: language === 'zh' ? '個人請假管理' : 'Personal Leave Management',
+      type: 'leave',
+      path: 'https://ap11.ragic.com/sims/reg/login.jsp?a=wisesemi202401'
+    }
+  ];
 
   return (
     <Card className="h-full">
@@ -36,29 +42,23 @@ const DailyTools = () => {
         </CardTitle>
       </CardHeader>
       <CardContent>
-        {isLoading ? (
-          <div className="animate-pulse space-y-2">
-            {[1, 2].map(i => (
-              <div key={i} className="h-10 bg-gray-200 rounded-md"></div>
-            ))}
-          </div>
-        ) : (
-          <ul className="space-y-2">
-            {dailyTools.map((tool: DailyTool) => (
-              <li key={tool.id}>
-                <Link
-                  to={tool.path}
-                  className="flex items-center p-2 rounded-md hover:bg-gray-100 transition-colors group"
-                >
-                  {getIcon(tool.type)}
-                  <span className="text-gray-700 group-hover:text-wisesemi-dark">
-                    {tool.name}
-                  </span>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        )}
+        <ul className="space-y-2">
+          {dailyTools.map((tool) => (
+            <li key={tool.id}>
+              <a
+                href={tool.path}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center p-2 rounded-md hover:bg-gray-100 transition-colors group"
+              >
+                {getIcon(tool.type)}
+                <span className="text-gray-700 group-hover:text-wisesemi-dark">
+                  {tool.name}
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
       </CardContent>
     </Card>
   );

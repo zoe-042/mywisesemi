@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FileText, FileSpreadsheet, FileImage, FilePlus, HelpCircle, UserPlus } from 'lucide-react';
+import { FileText, FileSpreadsheet, FileImage, HelpCircle, UserPlus } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useQuery } from '@tanstack/react-query';
 import { documentsApi } from '@/services/api';
@@ -38,8 +38,8 @@ const SharedDocuments = () => {
           {t('home.shared_documents')}
         </CardTitle>
       </CardHeader>
-      <CardContent className="flex flex-col h-full">
-        <div className="flex-grow">
+      <CardContent>
+        <div>
           <h3 className="text-sm font-medium text-wisesemi-dark mb-2">Shared Documents</h3>
           {isLoading ? (
             <div className="animate-pulse space-y-2">
@@ -64,13 +64,6 @@ const SharedDocuments = () => {
               ))}
             </ul>
           )}
-        </div>
-        
-        <div className="mt-4">
-          <button className="w-full flex items-center justify-center p-2 bg-wisesemi text-white rounded-md hover:bg-wisesemi-dark transition-colors">
-            <FilePlus className="h-4 w-4 mr-2" />
-            <span>Upload New Document</span>
-          </button>
         </div>
       </CardContent>
     </Card>
