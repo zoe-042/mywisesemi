@@ -6,7 +6,6 @@ import { useQuery } from '@tanstack/react-query';
 import { announcementsApi, eventsApi } from '@/services/api';
 
 import AdminLayout from '@/components/admin/AdminLayout';
-import Login from '@/components/admin/Login';
 import DocumentsTab from '@/components/admin/DocumentsTab';
 import AnnouncementsTab from '@/components/admin/AnnouncementsTab';
 import EventsTab from '@/components/admin/EventsTab';
@@ -75,11 +74,7 @@ This is a sample markdown document for demonstration purposes.
 Thank you for reading!
 `;
 
-const ADMIN_PASSWORD = "admin123";
-
 const AdminPage = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [password, setPassword] = useState('');
   const [selectedTab, setSelectedTab] = useState('documents');
   
   // Document state
@@ -104,20 +99,14 @@ const AdminPage = () => {
   const { data: announcements = [] } = useQuery({
     queryKey: ['announcements'],
     queryFn: announcementsApi.getAll,
-    enabled: isAuthenticated && selectedTab === 'announcements'
+    enabled: selectedTab === 'announcements'
   });
   
   const { data: events = [] } = useQuery({
     queryKey: ['events'],
     queryFn: eventsApi.getAll,
-    enabled: isAuthenticated && selectedTab === 'events'
+    enabled: selectedTab === 'events'
   });
-
-  const handleLogin = () => {
-    if (password === ADMIN_PASSWORD) {
-      setIsAuthenticated(true);
-    }
-  };
 
   const handleCategoryChange = (value: string) => {
     setSelectedCategory(value);
@@ -166,18 +155,6 @@ const AdminPage = () => {
       setEventLocation(event.location);
     }
   };
-
-  if (!isAuthenticated) {
-    return (
-      <AdminLayout>
-        <Login 
-          password={password}
-          setPassword={setPassword}
-          handleLogin={handleLogin}
-        />
-      </AdminLayout>
-    );
-  }
 
   return (
     <AdminLayout>
