@@ -1,3 +1,4 @@
+
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 
 type Language = 'en' | 'zh';
@@ -56,6 +57,47 @@ const translations: Translations = {
   'home.daily_tools': {
     'en': 'Daily Tools',
     'zh': '日常工具',
+  },
+  // Department translations
+  'dept.ceo-office': {
+    'en': 'CEO Office',
+    'zh': '執行長辦公室',
+  },
+  'dept.hr': {
+    'en': 'Human Resources',
+    'zh': '人力資源部',
+  },
+  'dept.finance': {
+    'en': 'Finance',
+    'zh': '財務部',
+  },
+  'dept.marketing': {
+    'en': 'Marketing',
+    'zh': '行銷部',
+  },
+  'dept.rd1': {
+    'en': 'RD1',
+    'zh': '研發一部',
+  },
+  'dept.rd2': {
+    'en': 'RD2',
+    'zh': '研發二部',
+  },
+  'dept.support': {
+    'en': 'Customer Support',
+    'zh': '客戶服務部',
+  },
+  'dept.sales': {
+    'en': 'Sales',
+    'zh': '業務部',
+  },
+  'dept.operations': {
+    'en': 'Operations',
+    'zh': '營運部',
+  },
+  'dept.itcad': {
+    'en': 'ITCAD',
+    'zh': 'IT電腦輔助設計部',
   },
   // Add more translations as needed
 };

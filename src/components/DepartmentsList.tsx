@@ -6,17 +6,26 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useQuery } from '@tanstack/react-query';
 import { departmentsApi } from '@/services/api';
 import { Department } from '@/types';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const DepartmentsList = () => {
+  const { t } = useLanguage();
+  
   const { data: departments = [], isLoading, error } = useQuery({
     queryKey: ['departments'],
     queryFn: departmentsApi.getAll,
   });
 
+  const getDepartmentName = (dept: Department) => {
+    const deptKey = dept.path.split('/').pop(); // Extract department key from path
+    const translationKey = `dept.${deptKey}`;
+    return t(translationKey);
+  };
+
   return (
     <Card className="h-full">
       <CardHeader className="pb-2">
-        <CardTitle className="text-lg font-semibold text-wisesemi-dark">Departments</CardTitle>
+        <CardTitle className="text-lg font-semibold text-wisesemi-dark">{t('home.departments')}</CardTitle>
       </CardHeader>
       <CardContent>
         {isLoading ? (
@@ -37,7 +46,7 @@ const DepartmentsList = () => {
                 >
                   <Folder className="h-4 w-4 mr-2 text-wisesemi-dark group-hover:text-wisesemi" />
                   <span className="text-gray-700 group-hover:text-wisesemi-dark">
-                    {department.name}
+                    {getDepartmentName(department)}
                   </span>
                 </Link>
               </li>
