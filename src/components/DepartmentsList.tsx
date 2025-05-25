@@ -22,6 +22,10 @@ const DepartmentsList = () => {
     return t(translationKey);
   };
 
+  const isExternalLink = (path: string) => {
+    return path.startsWith('http://') || path.startsWith('https://');
+  };
+
   return (
     <Card className="h-full">
       <CardHeader className="pb-2">
@@ -40,15 +44,29 @@ const DepartmentsList = () => {
           <ul className="space-y-2">
             {departments.map((department: Department) => (
               <li key={department.id}>
-                <Link 
-                  to={department.path}
-                  className="flex items-center p-2 rounded-md hover:bg-wisesemi-light transition-colors group"
-                >
-                  <Folder className="h-4 w-4 mr-2 text-wisesemi-dark group-hover:text-wisesemi" />
-                  <span className="text-gray-700 group-hover:text-wisesemi-dark">
-                    {getDepartmentName(department)}
-                  </span>
-                </Link>
+                {isExternalLink(department.path) ? (
+                  <a
+                    href={department.path}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center p-2 rounded-md hover:bg-wisesemi-light transition-colors group"
+                  >
+                    <Folder className="h-4 w-4 mr-2 text-wisesemi-dark group-hover:text-wisesemi" />
+                    <span className="text-gray-700 group-hover:text-wisesemi-dark">
+                      {getDepartmentName(department)}
+                    </span>
+                  </a>
+                ) : (
+                  <Link 
+                    to={department.path}
+                    className="flex items-center p-2 rounded-md hover:bg-wisesemi-light transition-colors group"
+                  >
+                    <Folder className="h-4 w-4 mr-2 text-wisesemi-dark group-hover:text-wisesemi" />
+                    <span className="text-gray-700 group-hover:text-wisesemi-dark">
+                      {getDepartmentName(department)}
+                    </span>
+                  </Link>
+                )}
               </li>
             ))}
           </ul>
