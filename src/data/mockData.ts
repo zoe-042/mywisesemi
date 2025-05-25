@@ -1,4 +1,3 @@
-
 import { Department, Project, ISODocument, Announcement, Event, Document, DailyTool } from "../types";
 
 export const departments: Department[] = [
@@ -11,7 +10,7 @@ export const departments: Department[] = [
   { id: 7, name: 'Customer Support', path: '/departments/support' },
   { id: 8, name: 'Sales', path: '/departments/sales' },
   { id: 9, name: 'Operations', path: '/departments/operations' },
-  { id: 10, name: 'ITCAD', path: '/departments/itcad' },
+  { id: 10, name: 'ITCAD', path: 'http://mywisesemicad.wisesemi.com' },
 ];
 
 export const projects: Project[] = [

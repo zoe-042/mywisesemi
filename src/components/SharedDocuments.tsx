@@ -39,32 +39,29 @@ const SharedDocuments = () => {
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <div>
-          <h3 className="text-sm font-medium text-wisesemi-dark mb-2">Shared Documents</h3>
-          {isLoading ? (
-            <div className="animate-pulse space-y-2">
-              {[1, 2, 3, 4].map(i => (
-                <div key={i} className="h-10 bg-gray-200 rounded-md"></div>
-              ))}
-            </div>
-          ) : (
-            <ul className="space-y-2">
-              {documents.map((document: Document) => (
-                <li key={document.id}>
-                  <Link
-                    to={document.path}
-                    className="flex items-center p-2 rounded-md hover:bg-gray-100 transition-colors group"
-                  >
-                    {getIcon(document.type)}
-                    <span className="text-gray-700 group-hover:text-wisesemi-dark">
-                      {document.name}
-                    </span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
+        {isLoading ? (
+          <div className="animate-pulse space-y-2">
+            {[1, 2, 3, 4].map(i => (
+              <div key={i} className="h-10 bg-gray-200 rounded-md"></div>
+            ))}
+          </div>
+        ) : (
+          <ul className="space-y-2">
+            {documents.map((document: Document) => (
+              <li key={document.id}>
+                <Link
+                  to={document.path}
+                  className="flex items-center p-2 rounded-md hover:bg-gray-100 transition-colors group"
+                >
+                  {getIcon(document.type)}
+                  <span className="text-gray-700 group-hover:text-wisesemi-dark">
+                    {document.name}
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        )}
       </CardContent>
     </Card>
   );
