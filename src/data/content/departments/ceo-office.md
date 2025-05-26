@@ -14,10 +14,8 @@ The CEO Office provides executive leadership and strategic direction for the ent
 
 ## Team Members
 
-- Michael Chen, Chief Executive Officer
-- Sarah Liu, Executive Assistant
-- Richard Wong, Chief of Staff
-- Jennifer Yang, Strategic Planning Manager
+- Wills Shih, Chief Executive Officer
+- YP Fang, Chief Operating Officer
 
 ## Focus Areas
 

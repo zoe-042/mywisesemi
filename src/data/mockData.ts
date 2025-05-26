@@ -11,6 +11,7 @@ export const departments: Department[] = [
   { id: 8, name: 'Sales', path: '/departments/sales' },
   { id: 9, name: 'Operations', path: '/departments/operations' },
   { id: 10, name: 'ITCAD', path: 'http://mywisesemicad.wisesemi.com' },
+  { id: 11, name: 'QA', path: 'http://mywisesemiqa.wisesemi.com' },
 ];
 
 export const projects: Project[] = [
