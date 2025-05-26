@@ -99,6 +99,10 @@ const translations: Translations = {
     'en': 'ITCAD',
     'zh': 'IT電腦輔助設計部',
   },
+  'dept.qa': {
+    'en': 'QA',
+    'zh': '品質保證部',
+  },
   // Add more translations as needed
 };
 

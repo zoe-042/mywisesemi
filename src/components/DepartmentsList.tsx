@@ -17,7 +17,14 @@ const DepartmentsList = () => {
   });
 
   const getDepartmentName = (dept: Department) => {
-    const deptKey = dept.path.split('/').pop(); // Extract department key from path
+    // For external links, use the department name directly
+    if (isExternalLink(dept.path)) {
+      const translationKey = `dept.${dept.name.toLowerCase()}`;
+      return t(translationKey);
+    }
+    
+    // For internal links, extract from path
+    const deptKey = dept.path.split('/').pop();
     const translationKey = `dept.${deptKey}`;
     return t(translationKey);
   };
