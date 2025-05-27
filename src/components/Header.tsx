@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Bell, Settings } from 'lucide-react';
+import { Settings } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
 import LanguageSelector from '@/components/LanguageSelector';
@@ -28,12 +28,6 @@ const Header = () => {
           >
             <Settings className="h-6 w-6" />
           </Link>
-          <div className="relative">
-            <Bell className="h-6 w-6 text-white cursor-pointer hover:text-wisesemi-light transition-colors" />
-            <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">
-              3
-            </span>
-          </div>
         </div>
       </div>
     </header>
