@@ -1,12 +1,12 @@
 
 # Company Announcements
 
-## IT System Maintenance
-**Date: 2025-04-12**
+## IT 系統更新
+**Date: 2025-05-29**
 
-The IT systems will be down for maintenance this Saturday from 10pm to 2am. Please save your work and log out before the maintenance window begins.
+IT 重大更新. 因需更新設定，所有帳號需重新設定.
 
-## IT System Maintenance
-**Date: 2025-04-12**
+## IT 系統維護
+**Date: 2025-05-30**
 
-The IT systems will be down for maintenance this Saturday from 10pm to 2am. Please save your work and log out before the maintenance window begins.
+預計連假進行系統重啟，如有問題，請與IT聯絡。
