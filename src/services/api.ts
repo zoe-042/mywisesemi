@@ -28,9 +28,9 @@ const documentsData: Document[] = [
 ];
 
 const projectsData: Project[] = [
-  { id: 1, name: 'Project Alpha', status: 'In Progress' },
-  { id: 2, name: 'Project Beta', status: 'Completed' },
-  { id: 3, name: 'Project Gamma', status: 'Planning' },
+  { id: 1, name: 'Project Alpha', path: '/projects/project-alpha' },
+  { id: 2, name: 'Project Beta', path: '/projects/project-beta' },
+  { id: 3, name: 'Project Gamma', path: '/projects/project-gamma' },
 ];
 
 import { announcementsService } from './announcementsService';
