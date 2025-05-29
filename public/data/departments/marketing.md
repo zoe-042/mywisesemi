@@ -17,10 +17,7 @@ The Marketing department is responsible for promoting our brand, driving custome
 
 ## Team Members / 團隊成員
 
-- Jessica Brown, Marketing Director / 行銷總監
-- David Chen, Digital Marketing Manager / 數位行銷經理
-- Sarah Wang, Content Marketing Specialist / 內容行銷專員
-- Kevin Liu, Brand Manager / 品牌經理
+- 
 
 ## Current Initiatives / 當前計劃
 
