@@ -1,4 +1,3 @@
-
 export interface ContentMetadata {
   id: string;
   name: string;
