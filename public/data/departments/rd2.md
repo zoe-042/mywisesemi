@@ -14,10 +14,8 @@ The Research and Development 2 department specializes in product optimization, m
 
 ## Team Members
 
-- Lisa Wang, RD2 Director
-- Mark Chen, Process Engineer
-- Diana Lin, Quality Engineer
-- James Liu, Test Engineer
+-
+-
 
 ## Focus Areas
 

@@ -14,10 +14,7 @@ The Operations department ensures efficient day-to-day business processes, suppl
 
 ## Team Members
 
-- Matthew Robinson, Operations Director
-- Linda Wang, Supply Chain Manager
-- Daniel Chen, Process Engineer
-- Nancy Liu, Quality Control Specialist
+-
 
 ## Operational Metrics
 

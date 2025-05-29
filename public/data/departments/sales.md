@@ -14,17 +14,7 @@ The Sales department drives revenue growth through strategic customer relationsh
 
 ## Team Members
 
-- Thomas Wilson, Sales Director
-- Jessica Park, Senior Sales Manager
-- Andrew Kim, Sales Representative
-- Sophie Chen, Business Development Manager
-
-## Sales Targets
-
-- Q1 2025: $2.5M revenue target
-- New customer acquisition: 50 accounts
-- Customer retention rate: 95%
-- Average deal size increase: 15%
+- 
 
 ## Market Focus
 

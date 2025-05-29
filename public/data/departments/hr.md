@@ -15,10 +15,7 @@ The Human Resources department is responsible for managing employee relations, r
 
 ## Team Members
 
-- Jane Smith, HR Director
-- Emily Chen, HR Specialist
-- David Wang, Talent Acquisition Manager
-- Sarah Lin, Benefits Coordinator
+-
 
 ## Current Initiatives
 

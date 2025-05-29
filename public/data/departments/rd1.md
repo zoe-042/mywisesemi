@@ -14,10 +14,9 @@ The Research and Development 1 department focuses on cutting-edge semiconductor 
 
 ## Team Members
 
-- Alex Chen, RD1 Director
-- Samantha Wong, Lead Researcher
-- Ryan Patel, Senior Engineer
-- Jennifer Kim, Design Engineer
+- 
+-
+
 
 ## Current Research Areas
 

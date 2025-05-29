@@ -14,10 +14,7 @@ The ITCAD (Information Technology Computer-Aided Design) department is responsib
 
 ## Team Members
 
-- David Chang, ITCAD Director
-- Kevin Liu, Senior CAD Developer
-- Amy Chen, Database Administrator
-- Tony Wang, IT Systems Engineer
+-
 
 ## Current Projects
 
