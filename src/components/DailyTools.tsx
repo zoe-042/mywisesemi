@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Utensils, FileBox, CalendarDays, Mail, HardDrive } from 'lucide-react';
+import { Utensils, FileBox, CalendarDays, Mail, HardDrive, MessageSquare, Calendar } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useLanguage } from '@/contexts/LanguageContext';
 
@@ -14,6 +14,10 @@ const getIcon = (type: string) => {
       return <Mail className="h-4 w-4 mr-2 text-blue-500" />;
     case 'drive':
       return <HardDrive className="h-4 w-4 mr-2 text-green-500" />;
+    case 'calendar':
+      return <Calendar className="h-4 w-4 mr-2 text-purple-500" />;
+    case 'chat':
+      return <MessageSquare className="h-4 w-4 mr-2 text-indigo-500" />;
     default:
       return <CalendarDays className="h-4 w-4 mr-2 text-blue-500" />;
   }
@@ -46,6 +50,18 @@ const DailyTools = () => {
       name: language === 'zh' ? '智騰雲端硬碟' : 'WiseSemi OADrive',
       type: 'drive',
       path: 'https://wsoa.wisesemi.com/oadrive'
+    },
+    {
+      id: 5,
+      name: language === 'zh' ? '智騰日曆' : 'WiseSemi Calendar',
+      type: 'calendar',
+      path: 'https://mail.wisesemi.com/calendar'
+    },
+    {
+      id: 6,
+      name: language === 'zh' ? '智騰聊天' : 'WiseSemi Chat',
+      type: 'chat',
+      path: 'https://mail.wisesemi.com/wschat'
     }
   ];
 

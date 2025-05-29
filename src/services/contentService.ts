@@ -116,6 +116,39 @@ export const contentRegistry: Record<string, ContentMetadata> = {
     author: 'Quality Team',
     path: '/data/iso/audit-procedures.md'
   },
+  // Life in Wisesemi
+  'employee-activities': {
+    id: 'employee-activities',
+    name: 'Employee Activities',
+    type: 'life',
+    lastUpdated: '2025-04-01',
+    author: 'HR Department',
+    path: '/data/life/employee-activities.md'
+  },
+  'company-dining': {
+    id: 'company-dining',
+    name: 'Company Dining',
+    type: 'life',
+    lastUpdated: '2025-04-01',
+    author: 'HR Department',
+    path: '/data/life/company-dining.md'
+  },
+  'team-building': {
+    id: 'team-building',
+    name: 'Team Building',
+    type: 'life',
+    lastUpdated: '2025-04-01',
+    author: 'HR Department',
+    path: '/data/life/team-building.md'
+  },
+  'work-life-balance': {
+    id: 'work-life-balance',
+    name: 'Work Life Balance',
+    type: 'life',
+    lastUpdated: '2025-04-01',
+    author: 'HR Department',
+    path: '/data/life/work-life-balance.md'
+  },
   // Announcements
   'announcements': {
     id: 'announcements',
