@@ -149,6 +149,14 @@ export const contentRegistry: Record<string, ContentMetadata> = {
     author: 'HR Department',
     path: '/data/life/work-life-balance.md'
   },
+  'photo-gallery': {
+    id: 'photo-gallery',
+    name: 'Photo Gallery',
+    type: 'life',
+    lastUpdated: '2025-04-01',
+    author: 'HR Department',
+    path: '/data/life/photo-gallery.md'
+  },
   // Announcements
   'announcements': {
     id: 'announcements',
@@ -173,7 +181,17 @@ export const contentRegistry: Record<string, ContentMetadata> = {
 export const contentService = {
   async getContent(contentId: string): Promise<string> {
     try {
-      const response = await fetch(`/data/${contentId}.md`);
+      let filePath = '';
+      
+      // Determine the correct file path based on content type and ID
+      if (contentRegistry[contentId]) {
+        filePath = contentRegistry[contentId].path;
+      } else {
+        // Fallback for documents not in registry
+        filePath = `/data/${contentId}.md`;
+      }
+      
+      const response = await fetch(filePath);
       if (!response.ok) {
         throw new Error(`Failed to load content: ${contentId}`);
       }
