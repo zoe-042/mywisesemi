@@ -1,4 +1,5 @@
 
+
 # Upcoming Events
 
 ## 智騰半導體 首次員工旅遊
@@ -10,6 +11,8 @@
 **Date: June 30, 2025**
 **Time: 10:00 AM**
 **Location: New Conference Room**
+
+## -----
 
 ## 2025 Q2季會與慶生會
 **Date: May 30, 2025**
@@ -23,16 +26,14 @@ Annual team building activities to strengthen collaboration and team spirit.
 **Time: 18:00 AM**
 **Location: 開飯川食堂**
 
-Strategic planning session for the upcoming fiscal year budget and objectives.
-
 ## 2025 年終尾牙
-**Date: Jan 20, 2025**
+**Date: Jan 10, 2025**
 **Time: 18:00 AM**
-**Location: 牛排**
+**Location: Roast 初熟成牛排**
 
 ## 智騰半導體 首次員工教育訓練
 **Date: Jan 07, 2025**
 **Time: 13:00 AM**
-**Location: 肯沃商務中心 Training Center**
+**Location: 肯沃商務中心**
 
 Professional development workshop on new technologies and best practices.
