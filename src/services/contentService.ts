@@ -1,3 +1,4 @@
+
 export interface ContentMetadata {
   id: string;
   name: string;
@@ -90,31 +91,6 @@ export const contentRegistry: Record<string, ContentMetadata> = {
     author: 'IT Department',
     path: '/data/departments/itcad.md'
   },
-  // ISO Documents
-  'quality-manual': {
-    id: 'quality-manual',
-    name: 'ISO 9001 Quality Manual',
-    type: 'iso',
-    lastUpdated: '2025-04-01',
-    author: 'Quality Team',
-    path: '/data/iso/quality-manual.md'
-  },
-  'process-docs': {
-    id: 'process-docs',
-    name: 'Process Documentation',
-    type: 'iso',
-    lastUpdated: '2025-04-01',
-    author: 'Quality Team',
-    path: '/data/iso/process-docs.md'
-  },
-  'audit-procedures': {
-    id: 'audit-procedures',
-    name: 'Audit Procedures',
-    type: 'iso',
-    lastUpdated: '2025-04-01',
-    author: 'Quality Team',
-    path: '/data/iso/audit-procedures.md'
-  },
   // Life in Wisesemi
   'employee-activities': {
     id: 'employee-activities',
@@ -147,6 +123,14 @@ export const contentRegistry: Record<string, ContentMetadata> = {
     lastUpdated: '2025-04-01',
     author: 'HR Department',
     path: '/data/life/work-life-balance.md'
+  },
+  'holiday-events': {
+    id: 'holiday-events',
+    name: 'Holiday Events',
+    type: 'life',
+    lastUpdated: '2025-04-01',
+    author: 'HR Department',
+    path: '/data/life/holiday-events.md'
   },
   'photo-gallery': {
     id: 'photo-gallery',

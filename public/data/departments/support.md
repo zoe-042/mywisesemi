@@ -21,8 +21,6 @@ The Customer Support department provides exceptional service to our clients, ens
 
 ## Service Standards / 服務標準
 
-
-
 ## Support Channels / 支援管道
 
 - Email: support@wisesemi.com

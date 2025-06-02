@@ -19,7 +19,6 @@ The Research and Development 1 department focuses on cutting-edge semiconductor 
 - 
 -
 
-
 ## Current Research Areas / 目前研究領域
 
 - Next-generation chip architectures / 下一代晶片架構
