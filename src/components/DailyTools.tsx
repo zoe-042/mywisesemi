@@ -49,7 +49,7 @@ const DailyTools = () => {
       id: 4,
       name: language === 'zh' ? '智騰雲端硬碟' : 'WiseSemi OADrive',
       type: 'drive',
-      path: 'https://wsoa.wisesemi.com/oadrive'
+      path: 'https://mail.wisesemi.com/oadrive'
     },
     {
       id: 5,
