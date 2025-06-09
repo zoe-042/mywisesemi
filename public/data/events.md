@@ -12,8 +12,6 @@
 **Time: 10:00 AM**
 **Location: New Conference Room**
 
-## -----
-
 ## 2025 Q2季會與慶生會
 **Date: May 30, 2025**
 **Time: 12:00 PM**

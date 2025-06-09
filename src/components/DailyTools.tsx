@@ -43,25 +43,25 @@ const DailyTools = () => {
       id: 3,
       name: language === 'zh' ? '智騰郵件' : 'WiseSemi Mail',
       type: 'mail',
-      path: 'https://mail.wisesemi.com/wsmail'
+      path: 'https://172.16.0.253/wsmail'
     },
     {
       id: 4,
       name: language === 'zh' ? '智騰雲端硬碟' : 'WiseSemi OADrive',
       type: 'drive',
-      path: 'https://mail.wisesemi.com/oadrive'
+      path: 'https://172.16.0.253/oadrive'
     },
     {
       id: 5,
       name: language === 'zh' ? '智騰日曆' : 'WiseSemi Calendar',
       type: 'calendar',
-      path: 'https://mail.wisesemi.com/calendar'
+      path: 'https://172.16.0.253/calendar'
     },
     {
       id: 6,
       name: language === 'zh' ? '智騰聊天' : 'WiseSemi Chat',
       type: 'chat',
-      path: 'https://mail.wisesemi.com/wschat'
+      path: 'https://172.16.0.253/wschat'
     }
   ];
 
