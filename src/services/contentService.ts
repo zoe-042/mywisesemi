@@ -17,7 +17,7 @@ export const contentRegistry: Record<string, ContentMetadata> = {
     type: 'department',
     lastUpdated: '2025-04-01',
     author: 'Admin',
-    path: '/data/departments/ceo-office.md'
+    path: 'data/departments/ceo-office.md'
   },
   'hr': {
     id: 'hr',
@@ -25,7 +25,7 @@ export const contentRegistry: Record<string, ContentMetadata> = {
     type: 'department',
     lastUpdated: '2025-04-01',
     author: 'Jane Smith',
-    path: '/data/departments/hr.md'
+    path: 'data/departments/hr.md'
   },
   'finance': {
     id: 'finance',
@@ -33,7 +33,7 @@ export const contentRegistry: Record<string, ContentMetadata> = {
     type: 'department',
     lastUpdated: '2025-04-01',
     author: 'Robert Thompson',
-    path: '/data/departments/finance.md'
+    path: 'data/departments/finance.md'
   },
   'marketing': {
     id: 'marketing',
@@ -41,7 +41,7 @@ export const contentRegistry: Record<string, ContentMetadata> = {
     type: 'department',
     lastUpdated: '2025-04-01',
     author: 'Jessica Brown',
-    path: '/data/departments/marketing.md'
+    path: 'data/departments/marketing.md'
   },
   'rd1': {
     id: 'rd1',
@@ -49,7 +49,7 @@ export const contentRegistry: Record<string, ContentMetadata> = {
     type: 'department',
     lastUpdated: '2025-04-01',
     author: 'Alex Chen',
-    path: '/data/departments/rd1.md'
+    path: 'data/departments/rd1.md'
   },
   'rd2': {
     id: 'rd2',
@@ -57,7 +57,7 @@ export const contentRegistry: Record<string, ContentMetadata> = {
     type: 'department',
     lastUpdated: '2025-04-01',
     author: 'Samantha Wong',
-    path: '/data/departments/rd2.md'
+    path: 'data/departments/rd2.md'
   },
   'support': {
     id: 'support',
@@ -65,7 +65,7 @@ export const contentRegistry: Record<string, ContentMetadata> = {
     type: 'department',
     lastUpdated: '2025-04-01',
     author: 'Brian Johnson',
-    path: '/data/departments/support.md'
+    path: 'data/departments/support.md'
   },
   'sales': {
     id: 'sales',
@@ -73,7 +73,7 @@ export const contentRegistry: Record<string, ContentMetadata> = {
     type: 'department',
     lastUpdated: '2025-04-01',
     author: 'Thomas Wilson',
-    path: '/data/departments/sales.md'
+    path: 'data/departments/sales.md'
   },
   'operations': {
     id: 'operations',
@@ -81,7 +81,7 @@ export const contentRegistry: Record<string, ContentMetadata> = {
     type: 'department',
     lastUpdated: '2025-04-01',
     author: 'Matthew Robinson',
-    path: '/data/departments/operations.md'
+    path: 'data/departments/operations.md'
   },
   'itcad': {
     id: 'itcad',
@@ -89,7 +89,7 @@ export const contentRegistry: Record<string, ContentMetadata> = {
     type: 'department',
     lastUpdated: '2025-04-01',
     author: 'IT Department',
-    path: '/data/departments/itcad.md'
+    path: 'data/departments/itcad.md'
   },
   // Life in Wisesemi
   'employee-activities': {
@@ -98,7 +98,7 @@ export const contentRegistry: Record<string, ContentMetadata> = {
     type: 'life',
     lastUpdated: '2025-04-01',
     author: 'HR Department',
-    path: '/data/life/employee-activities.md'
+    path: 'data/life/employee-activities.md'
   },
   'company-dining': {
     id: 'company-dining',
@@ -106,7 +106,7 @@ export const contentRegistry: Record<string, ContentMetadata> = {
     type: 'life',
     lastUpdated: '2025-04-01',
     author: 'HR Department',
-    path: '/data/life/company-dining.md'
+    path: 'data/life/company-dining.md'
   },
   'team-building': {
     id: 'team-building',
@@ -114,7 +114,7 @@ export const contentRegistry: Record<string, ContentMetadata> = {
     type: 'life',
     lastUpdated: '2025-04-01',
     author: 'HR Department',
-    path: '/data/life/team-building.md'
+    path: 'data/life/team-building.md'
   },
   'work-life-balance': {
     id: 'work-life-balance',
@@ -122,7 +122,7 @@ export const contentRegistry: Record<string, ContentMetadata> = {
     type: 'life',
     lastUpdated: '2025-04-01',
     author: 'HR Department',
-    path: '/data/life/work-life-balance.md'
+    path: 'data/life/work-life-balance.md'
   },
   'holiday-events': {
     id: 'holiday-events',
@@ -130,7 +130,7 @@ export const contentRegistry: Record<string, ContentMetadata> = {
     type: 'life',
     lastUpdated: '2025-04-01',
     author: 'HR Department',
-    path: '/data/life/holiday-events.md'
+    path: 'data/life/holiday-events.md'
   },
   'photo-gallery': {
     id: 'photo-gallery',
@@ -147,7 +147,7 @@ export const contentRegistry: Record<string, ContentMetadata> = {
     type: 'announcement',
     lastUpdated: '2025-04-01',
     author: 'HR Department',
-    path: '/data/announcements.md'
+    path: 'data/announcements.md'
   },
   // Events
   'events': {
@@ -156,7 +156,7 @@ export const contentRegistry: Record<string, ContentMetadata> = {
     type: 'event',
     lastUpdated: '2025-04-01',
     author: 'Event Coordinator',
-    path: '/data/events.md'
+    path: 'data/events.md'
   },
   // Shared Documents
   'marketing-assets': {
@@ -165,7 +165,7 @@ export const contentRegistry: Record<string, ContentMetadata> = {
     type: 'document',
     lastUpdated: '2025-04-01',
     author: 'Marketing Team',
-    path: '/data/documents/marketing-assets.md'
+    path: 'data/documents/marketing-assets.md'
   },
   'employee-handbook': {
     id: 'employee-handbook',
@@ -173,7 +173,7 @@ export const contentRegistry: Record<string, ContentMetadata> = {
     type: 'document',
     lastUpdated: '2025-04-01',
     author: 'HR Department',
-    path: '/data/documents/employee-handbook.md'
+    path: 'data/documents/employee-handbook.md'
   },
   'financial-report': {
     id: 'financial-report',
@@ -181,7 +181,7 @@ export const contentRegistry: Record<string, ContentMetadata> = {
     type: 'document',
     lastUpdated: '2025-04-01',
     author: 'Finance Team',
-    path: '/data/documents/financial-report.md'
+    path: 'data/documents/financial-report.md'
   },
   'project-template': {
     id: 'project-template',
@@ -189,7 +189,7 @@ export const contentRegistry: Record<string, ContentMetadata> = {
     type: 'document',
     lastUpdated: '2025-04-01',
     author: 'Project Management',
-    path: '/data/documents/project-template.md'
+    path: 'data/documents/project-template.md'
   },
   'product-roadmap': {
     id: 'product-roadmap',
@@ -197,7 +197,7 @@ export const contentRegistry: Record<string, ContentMetadata> = {
     type: 'document',
     lastUpdated: '2025-04-01',
     author: 'Product Team',
-    path: '/data/documents/product-roadmap.md'
+    path: 'data/documents/product-roadmap.md'
   },
   'new-employee-guide': {
     id: 'new-employee-guide',
@@ -205,7 +205,7 @@ export const contentRegistry: Record<string, ContentMetadata> = {
     type: 'guide',
     lastUpdated: '2025-04-01',
     author: 'HR Department',
-    path: '/data/documents/new-employee-guide.md'
+    path: 'data/documents/new-employee-guide.md'
   },
   'it-faq': {
     id: 'it-faq',
@@ -213,7 +213,7 @@ export const contentRegistry: Record<string, ContentMetadata> = {
     type: 'faq',
     lastUpdated: '2025-04-01',
     author: 'IT Department',
-    path: '/data/documents/it-faq.md'
+    path: 'data/documents/it-faq.md'
   },
   'brand-guidelines': {
     id: 'brand-guidelines',
@@ -221,7 +221,7 @@ export const contentRegistry: Record<string, ContentMetadata> = {
     type: 'document',
     lastUpdated: '2025-04-01',
     author: 'Marketing Team',
-    path: '/data/documents/brand-guidelines.md'
+    path: 'data/documents/brand-guidelines.md'
   }
 };
 
@@ -239,14 +239,14 @@ export const contentService = {
           filePath = contentRegistry[actualId].path;
         } else {
           // Fallback: construct path directly
-          filePath = `/data/${contentId}.md`;
+          filePath = `data/${contentId}.md`;
         }
       } else if (contentRegistry[contentId]) {
         // Direct lookup by ID
         filePath = contentRegistry[contentId].path;
       } else {
         // Fallback for documents not in registry
-        filePath = `/data/documents/${contentId}.md`;
+        filePath = `data/documents/${contentId}.md`;
       }
       
       console.log(`Loading content from: ${filePath}`);
