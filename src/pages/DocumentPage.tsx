@@ -75,12 +75,39 @@ const DocumentPage = () => {
     );
   }
   
-  // Simple markdown rendering for demonstration
+  // Enhanced markdown rendering with image support
   const renderMarkdown = (markdown: string) => {
     const lines = markdown.split('\n');
     return (
       <div className="markdown">
         {lines.map((line, index) => {
+          // Handle images: ![alt](path)
+          const imageMatch = line.match(/^!\[(.*?)\]\((.*?)\)$/);
+          if (imageMatch) {
+            const altText = imageMatch[1];
+            let imagePath = imageMatch[2];
+            
+            // Handle relative paths starting with ./
+            if (imagePath.startsWith('./')) {
+              // Convert relative path to absolute path from public folder
+              imagePath = `/data/documents/${imagePath.substring(2)}`;
+            }
+            
+            return (
+              <div key={index} className="my-4">
+                <img 
+                  src={imagePath} 
+                  alt={altText} 
+                  className="max-w-full h-auto rounded-lg shadow-md"
+                  onError={(e) => {
+                    console.error(`Failed to load image: ${imagePath}`);
+                    e.currentTarget.style.display = 'none';
+                  }}
+                />
+              </div>
+            );
+          }
+          
           if (line.startsWith('# ')) {
             return <h1 key={index} className="text-2xl font-bold mb-4">{line.substring(2)}</h1>;
           } else if (line.startsWith('## ')) {
