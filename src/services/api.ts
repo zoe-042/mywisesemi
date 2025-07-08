@@ -1,3 +1,4 @@
+
 import { Department, Document, Announcement, Event, Project } from '@/types';
 
 const departmentsData: Department[] = [
@@ -16,11 +17,10 @@ const departmentsData: Department[] = [
 
 const documentsData: Document[] = [
   { id: 3, name: '員工手冊', type: 'document', path: '/documents/employee-handbook' },
-  { id: 4, name: '產品路線圖', type: 'document', path: '/documents/product-roadmap' },
-  { id: 5, name: '行銷素材庫', type: 'image', path: '/documents/marketing-assets' },
-  { id: 6, name: '專案提案模板', type: 'document', path: '/documents/project-template' },
   { id: 7, name: '員工常見問題', type: 'faq', path: '/documents/employee-faq' },
   { id: 8, name: '新員工指南', type: 'guide', path: '/documents/new-employee-guide' },
+  { id: 6, name: '專案提案模板', type: 'document', path: '/documents/project-template' },
+  { id: 4, name: '產品路線圖', type: 'document', path: '/documents/product-roadmap' },
 ];
 
 const projectsData: Project[] = [
