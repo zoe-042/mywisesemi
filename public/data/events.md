@@ -3,10 +3,10 @@
 # Upcoming Events
 
 ## 智騰半導體 首次員工旅遊
+**[📄 日月潭](./sunmoomlake.pdf)
 **Date: Sep. 13/14, 2025**
 **Time: ALL DAY**
 **Location: 雲品 日月潭**
-[📄 Open Report PDF](./sunmoomlake.pdf)
 
 ## 智騰半導體 2025 股東會
 **Date: June 30, 2025**
