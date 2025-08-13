@@ -74,7 +74,14 @@ export const lastSeenService = {
   getAllLastSeen(): LastSeenData {
     try {
       const stored = localStorage.getItem(STORAGE_KEY);
-      return stored ? JSON.parse(stored) : {};
+      if (!stored) return {};
+      
+      const parsed = JSON.parse(stored);
+      // Validate the parsed data structure
+      if (typeof parsed === 'object' && parsed !== null) {
+        return parsed as LastSeenData;
+      }
+      return {};
     } catch (error) {
       console.error('Error loading last seen data:', error);
       return {};
@@ -97,7 +104,7 @@ export const lastSeenService = {
       const now = Date.now();
       
       Object.entries(data).forEach(([contentId, entry]) => {
-        if (entry.contentType === contentType) {
+        if (entry && typeof entry === 'object' && 'contentType' in entry && entry.contentType === contentType) {
           data[contentId] = { ...entry, timestamp: now };
         }
       });
@@ -123,7 +130,13 @@ export const lastSeenService = {
   getConfig(): NewContentConfig | null {
     try {
       const stored = localStorage.getItem('wisesemi-new-content-config');
-      return stored ? JSON.parse(stored) : null;
+      if (!stored) return null;
+      
+      const parsed = JSON.parse(stored);
+      if (typeof parsed === 'object' && parsed !== null) {
+        return parsed as NewContentConfig;
+      }
+      return null;
     } catch (error) {
       return null;
     }
