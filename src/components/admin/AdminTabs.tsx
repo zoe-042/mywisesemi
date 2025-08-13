@@ -36,15 +36,24 @@ const AdminTabs = () => {
           </TabsContent>
 
           <TabsContent value="announcements">
-            <AnnouncementsTab />
+            <div className="p-4 border rounded-lg">
+              <h3 className="text-lg font-semibold mb-2">Announcements Management</h3>
+              <p className="text-gray-600">Announcements management will be implemented here.</p>
+            </div>
           </TabsContent>
 
           <TabsContent value="events">
-            <EventsTab />
+            <div className="p-4 border rounded-lg">
+              <h3 className="text-lg font-semibold mb-2">Events Management</h3>
+              <p className="text-gray-600">Events management will be implemented here.</p>
+            </div>
           </TabsContent>
 
           <TabsContent value="documents">
-            <DocumentsTab />
+            <div className="p-4 border rounded-lg">
+              <h3 className="text-lg font-semibold mb-2">Documents Management</h3>
+              <p className="text-gray-600">Documents management will be implemented here.</p>
+            </div>
           </TabsContent>
         </div>
       </Tabs>

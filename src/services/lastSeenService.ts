@@ -120,7 +120,7 @@ export const lastSeenService = {
   },
 
   // Helper to get current configuration (assumes it's available in localStorage)
-  private getConfig(): NewContentConfig | null {
+  getConfig(): NewContentConfig | null {
     try {
       const stored = localStorage.getItem('wisesemi-new-content-config');
       return stored ? JSON.parse(stored) : null;
