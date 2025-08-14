@@ -1,5 +1,3 @@
-
-
 export interface ContentMetadata {
   id: string;
   name: string;
@@ -16,7 +14,7 @@ export const contentRegistry: Record<string, ContentMetadata> = {
     id: 'ceo-office',
     name: 'CEO Office',
     type: 'department',
-    lastUpdated: '2025-01-13',
+    lastUpdated: '2025-08-14',
     author: 'Admin',
     path: '/data/departments/ceo-office.md'
   },
@@ -24,7 +22,7 @@ export const contentRegistry: Record<string, ContentMetadata> = {
     id: 'hr',
     name: 'Human Resources',
     type: 'department',
-    lastUpdated: '2025-01-14',
+    lastUpdated: '2025-08-14',
     author: 'Jane Smith',
     path: '/data/departments/hr.md'
   },
@@ -32,7 +30,7 @@ export const contentRegistry: Record<string, ContentMetadata> = {
     id: 'finance',
     name: 'Finance',
     type: 'department',
-    lastUpdated: '2025-01-12',
+    lastUpdated: '2025-08-13',
     author: 'Robert Thompson',
     path: '/data/departments/finance.md'
   },
@@ -40,7 +38,7 @@ export const contentRegistry: Record<string, ContentMetadata> = {
     id: 'marketing',
     name: 'Marketing',
     type: 'department',
-    lastUpdated: '2025-01-14',
+    lastUpdated: '2025-08-14',
     author: 'Jessica Brown',
     path: '/data/departments/marketing.md'
   },
@@ -48,7 +46,7 @@ export const contentRegistry: Record<string, ContentMetadata> = {
     id: 'rd1',
     name: 'RD1',
     type: 'department',
-    lastUpdated: '2025-01-13',
+    lastUpdated: '2025-08-14',
     author: 'Alex Chen',
     path: '/data/departments/rd1.md'
   },
@@ -56,7 +54,7 @@ export const contentRegistry: Record<string, ContentMetadata> = {
     id: 'rd2',
     name: 'RD2',
     type: 'department',
-    lastUpdated: '2025-04-01',
+    lastUpdated: '2025-08-13',
     author: 'Samantha Wong',
     path: '/data/departments/rd2.md'
   },
@@ -64,7 +62,7 @@ export const contentRegistry: Record<string, ContentMetadata> = {
     id: 'support',
     name: 'Customer Support',
     type: 'department',
-    lastUpdated: '2025-04-01',
+    lastUpdated: '2025-08-14',
     author: 'Brian Johnson',
     path: '/data/departments/support.md'
   },
@@ -72,7 +70,7 @@ export const contentRegistry: Record<string, ContentMetadata> = {
     id: 'customer support',
     name: 'Customer Support',
     type: 'department',
-    lastUpdated: '2025-04-01',
+    lastUpdated: '2025-08-14',
     author: 'Brian Johnson',
     path: '/data/departments/support.md'
   },
@@ -80,7 +78,7 @@ export const contentRegistry: Record<string, ContentMetadata> = {
     id: 'sales',
     name: 'Sales',
     type: 'department',
-    lastUpdated: '2025-01-14',
+    lastUpdated: '2025-08-14',
     author: 'Thomas Wilson',
     path: '/data/departments/sales.md'
   },
@@ -88,7 +86,7 @@ export const contentRegistry: Record<string, ContentMetadata> = {
     id: 'operations',
     name: 'Operations',
     type: 'department',
-    lastUpdated: '2025-04-01',
+    lastUpdated: '2025-08-13',
     author: 'Matthew Robinson',
     path: '/data/departments/operations.md'
   },
@@ -96,7 +94,7 @@ export const contentRegistry: Record<string, ContentMetadata> = {
     id: 'itcad',
     name: 'ITCAD',
     type: 'department',
-    lastUpdated: '2025-01-13',
+    lastUpdated: '2025-08-14',
     author: 'IT Department',
     path: '/data/departments/itcad.md'
   },
@@ -106,7 +104,7 @@ export const contentRegistry: Record<string, ContentMetadata> = {
     id: 'announcement-1',
     name: 'Company Policy Update',
     type: 'announcement',
-    lastUpdated: '2025-01-14',
+    lastUpdated: '2025-08-14',
     author: 'HR Department',
     path: '/data/announcements.md'
   },
@@ -114,7 +112,7 @@ export const contentRegistry: Record<string, ContentMetadata> = {
     id: 'announcement-2',
     name: 'New Office Hours',
     type: 'announcement',
-    lastUpdated: '2025-01-13',
+    lastUpdated: '2025-08-14',
     author: 'HR Department',
     path: '/data/announcements.md'
   },
@@ -122,7 +120,7 @@ export const contentRegistry: Record<string, ContentMetadata> = {
     id: 'announcement-3',
     name: 'IT System Maintenance',
     type: 'announcement',
-    lastUpdated: '2025-01-12',
+    lastUpdated: '2025-08-13',
     author: 'IT Department',
     path: '/data/announcements.md'
   },
@@ -132,7 +130,7 @@ export const contentRegistry: Record<string, ContentMetadata> = {
     id: 'event-1',
     name: 'Team Building Event',
     type: 'event',
-    lastUpdated: '2025-01-14',
+    lastUpdated: '2025-08-14',
     author: 'Event Coordinator',
     path: '/data/events.md'
   },
@@ -140,7 +138,7 @@ export const contentRegistry: Record<string, ContentMetadata> = {
     id: 'event-2',
     name: 'Quarterly All-Hands',
     type: 'event',
-    lastUpdated: '2025-01-13',
+    lastUpdated: '2025-08-14',
     author: 'Event Coordinator',
     path: '/data/events.md'
   },
@@ -148,7 +146,7 @@ export const contentRegistry: Record<string, ContentMetadata> = {
     id: 'event-3',
     name: 'Holiday Party',
     type: 'event',
-    lastUpdated: '2025-01-12',
+    lastUpdated: '2025-08-13',
     author: 'Event Coordinator',
     path: '/data/events.md'
   },
@@ -158,7 +156,7 @@ export const contentRegistry: Record<string, ContentMetadata> = {
     id: 'document-3',
     name: '員工手冊',
     type: 'document',
-    lastUpdated: '2025-01-14',
+    lastUpdated: '2025-08-14',
     author: 'HR Department',
     path: '/documents/employee-handbook'
   },
@@ -166,7 +164,7 @@ export const contentRegistry: Record<string, ContentMetadata> = {
     id: 'document-7',
     name: '員工常見問題',
     type: 'faq',
-    lastUpdated: '2025-01-13',
+    lastUpdated: '2025-08-14',
     author: 'HR Department',
     path: '/documents/employee-faq'
   },
@@ -174,7 +172,7 @@ export const contentRegistry: Record<string, ContentMetadata> = {
     id: 'document-8',
     name: '新員工指南',
     type: 'guide',
-    lastUpdated: '2025-01-12',
+    lastUpdated: '2025-08-13',
     author: 'HR Department',
     path: '/documents/new-employee-guide'
   },
@@ -182,7 +180,7 @@ export const contentRegistry: Record<string, ContentMetadata> = {
     id: 'document-6',
     name: '專案提案模板',
     type: 'document',
-    lastUpdated: '2025-04-01',
+    lastUpdated: '2025-08-14',
     author: 'Project Management',
     path: '/documents/project-template'
   },
@@ -190,7 +188,7 @@ export const contentRegistry: Record<string, ContentMetadata> = {
     id: 'document-4',
     name: '產品路線圖',
     type: 'document',
-    lastUpdated: '2025-01-13',
+    lastUpdated: '2025-08-14',
     author: 'Product Team',
     path: '/documents/product-roadmap'
   },
@@ -200,7 +198,7 @@ export const contentRegistry: Record<string, ContentMetadata> = {
     id: 'employee-activities',
     name: 'Employee Activities',
     type: 'life',
-    lastUpdated: '2025-04-01',
+    lastUpdated: '2025-08-14',
     author: 'HR Department',
     path: '/data/life/employee-activities.md'
   },
@@ -208,7 +206,7 @@ export const contentRegistry: Record<string, ContentMetadata> = {
     id: 'company-dining',
     name: 'Company Dining',
     type: 'life',
-    lastUpdated: '2025-04-01',
+    lastUpdated: '2025-08-14',
     author: 'HR Department',
     path: '/data/life/company-dining.md'
   },
@@ -216,7 +214,7 @@ export const contentRegistry: Record<string, ContentMetadata> = {
     id: 'team-building',
     name: 'Team Building',
     type: 'life',
-    lastUpdated: '2025-04-01',
+    lastUpdated: '2025-08-14',
     author: 'HR Department',
     path: '/data/life/team-building.md'
   },
@@ -224,7 +222,7 @@ export const contentRegistry: Record<string, ContentMetadata> = {
     id: 'work-life-balance',
     name: 'Work Life Balance',
     type: 'life',
-    lastUpdated: '2025-04-01',
+    lastUpdated: '2025-08-14',
     author: 'HR Department',
     path: '/data/life/work-life-balance.md'
   },
@@ -232,7 +230,7 @@ export const contentRegistry: Record<string, ContentMetadata> = {
     id: 'holiday-events',
     name: 'Holiday Events',
     type: 'life',
-    lastUpdated: '2025-04-01',
+    lastUpdated: '2025-08-14',
     author: 'HR Department',
     path: '/data/life/holiday-events.md'
   },
@@ -240,7 +238,7 @@ export const contentRegistry: Record<string, ContentMetadata> = {
     id: 'photo-gallery',
     name: 'Photo Gallery',
     type: 'life',
-    lastUpdated: '2025-04-01',
+    lastUpdated: '2025-08-14',
     author: 'HR Department',
     path: 'http://mywisesemi.photo.wisesemi.com/'
   },
@@ -250,7 +248,7 @@ export const contentRegistry: Record<string, ContentMetadata> = {
     id: 'announcements',
     name: 'Company Announcements',
     type: 'announcement',
-    lastUpdated: '2025-01-14',
+    lastUpdated: '2025-08-14',
     author: 'HR Department',
     path: '/data/announcements.md'
   },
@@ -258,7 +256,7 @@ export const contentRegistry: Record<string, ContentMetadata> = {
     id: 'events',
     name: 'Upcoming Events',
     type: 'event',
-    lastUpdated: '2025-01-14',
+    lastUpdated: '2025-08-14',
     author: 'Event Coordinator',
     path: '/data/events.md'
   },
@@ -266,7 +264,7 @@ export const contentRegistry: Record<string, ContentMetadata> = {
     id: 'marketing-assets',
     name: 'Marketing Assets',
     type: 'document',
-    lastUpdated: '2025-01-13',
+    lastUpdated: '2025-08-13',
     author: 'Marketing Team',
     path: '/data/documents/marketing-assets.md'
   },
@@ -274,7 +272,7 @@ export const contentRegistry: Record<string, ContentMetadata> = {
     id: 'employee-handbook',
     name: 'Employee Handbook',
     type: 'document',
-    lastUpdated: '2025-01-14',
+    lastUpdated: '2025-08-14',
     author: 'HR Department',
     path: '/data/documents/employee-handbook.md'
   },
@@ -282,7 +280,7 @@ export const contentRegistry: Record<string, ContentMetadata> = {
     id: 'project-template',
     name: 'Project Template',
     type: 'document',
-    lastUpdated: '2025-04-01',
+    lastUpdated: '2025-08-14',
     author: 'Project Management',
     path: '/data/documents/project-template.md'
   },
@@ -290,7 +288,7 @@ export const contentRegistry: Record<string, ContentMetadata> = {
     id: 'product-roadmap',
     name: 'Product Roadmap',
     type: 'document',
-    lastUpdated: '2025-01-13',
+    lastUpdated: '2025-08-13',
     author: 'Product Team',
     path: '/data/documents/product-roadmap.md'
   },
@@ -298,7 +296,7 @@ export const contentRegistry: Record<string, ContentMetadata> = {
     id: 'new-employee-guide',
     name: 'New Employee Guide',
     type: 'guide',
-    lastUpdated: '2025-04-01',
+    lastUpdated: '2025-08-14',
     author: 'HR Department',
     path: '/data/documents/new-employee-guide.md'
   },
@@ -306,7 +304,7 @@ export const contentRegistry: Record<string, ContentMetadata> = {
     id: 'employee-faq',
     name: 'Employee FAQ',
     type: 'faq',
-    lastUpdated: '2025-04-01',
+    lastUpdated: '2025-08-14',
     author: 'HR Department',
     path: '/data/documents/employee-faq.md'
   }
@@ -380,4 +378,3 @@ export const contentService = {
     return Object.values(contentRegistry);
   }
 };
-

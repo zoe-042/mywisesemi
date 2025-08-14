@@ -8,33 +8,52 @@ export const useNewContent = (contentId: string, contentType: string) => {
   const { config } = useConfiguration();
   
   const isNew = useMemo(() => {
+    console.log(`useNewContent - Checking contentId: ${contentId}, contentType: ${contentType}`);
+    console.log(`Config enabled: ${config.enabled}, contentType enabled: ${config.contentTypes[contentType as keyof typeof config.contentTypes]}`);
+    
     if (!config.enabled || !config.contentTypes[contentType as keyof typeof config.contentTypes]) {
+      console.log(`Content type ${contentType} is disabled or config is disabled`);
       return false;
     }
 
     const metadata = contentService.getContentMetadata(contentId);
-    if (!metadata) return false;
+    if (!metadata) {
+      console.log(`No metadata found for contentId: ${contentId}`);
+      return false;
+    }
 
+    console.log(`Metadata found: ${JSON.stringify(metadata)}`);
+    
     const lastUpdated = new Date(metadata.lastUpdated).getTime();
     const lastSeen = lastSeenService.getLastSeen(contentId);
+    const now = Date.now();
+    
+    console.log(`Last updated: ${new Date(lastUpdated).toISOString()}`);
+    console.log(`Last seen: ${lastSeen ? lastSeen.toISOString() : 'never'}`);
+    console.log(`Now: ${new Date(now).toISOString()}`);
     
     // If never seen, check if it's within the persistence window
     if (!lastSeen) {
-      const now = Date.now();
       const persistenceWindow = config.defaultPersistenceDays * 24 * 60 * 60 * 1000;
-      return (now - lastUpdated) <= persistenceWindow;
+      const isWithinWindow = (now - lastUpdated) <= persistenceWindow;
+      console.log(`Never seen - persistence window: ${config.defaultPersistenceDays} days, within window: ${isWithinWindow}`);
+      return isWithinWindow;
     }
     
     // If seen, check if content was updated after last seen
-    return lastUpdated > lastSeen.getTime();
+    const wasUpdatedAfterSeen = lastUpdated > lastSeen.getTime();
+    console.log(`Was updated after last seen: ${wasUpdatedAfterSeen}`);
+    return wasUpdatedAfterSeen;
   }, [contentId, contentType, config]);
 
   const markAsSeen = () => {
+    console.log(`Marking as seen: ${contentId}, auto mark: ${config.autoMarkAsSeen}`);
     if (config.autoMarkAsSeen) {
       lastSeenService.markAsSeen(contentId, contentType);
     }
   };
 
+  console.log(`useNewContent result for ${contentId}: isNew = ${isNew}`);
   return { isNew, markAsSeen };
 };
 
