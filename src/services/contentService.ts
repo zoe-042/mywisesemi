@@ -1,4 +1,5 @@
 
+
 export interface ContentMetadata {
   id: string;
   name: string;
@@ -67,6 +68,14 @@ export const contentRegistry: Record<string, ContentMetadata> = {
     author: 'Brian Johnson',
     path: '/data/departments/support.md'
   },
+  'customer support': {
+    id: 'customer support',
+    name: 'Customer Support',
+    type: 'department',
+    lastUpdated: '2025-04-01',
+    author: 'Brian Johnson',
+    path: '/data/departments/support.md'
+  },
   'sales': {
     id: 'sales',
     name: 'Sales',
@@ -91,6 +100,101 @@ export const contentRegistry: Record<string, ContentMetadata> = {
     author: 'IT Department',
     path: '/data/departments/itcad.md'
   },
+  
+  // Individual Announcements (matching component IDs)
+  'announcement-1': {
+    id: 'announcement-1',
+    name: 'Company Policy Update',
+    type: 'announcement',
+    lastUpdated: '2025-01-14',
+    author: 'HR Department',
+    path: '/data/announcements.md'
+  },
+  'announcement-2': {
+    id: 'announcement-2',
+    name: 'New Office Hours',
+    type: 'announcement',
+    lastUpdated: '2025-01-13',
+    author: 'HR Department',
+    path: '/data/announcements.md'
+  },
+  'announcement-3': {
+    id: 'announcement-3',
+    name: 'IT System Maintenance',
+    type: 'announcement',
+    lastUpdated: '2025-01-12',
+    author: 'IT Department',
+    path: '/data/announcements.md'
+  },
+
+  // Individual Events (matching component IDs)
+  'event-1': {
+    id: 'event-1',
+    name: 'Team Building Event',
+    type: 'event',
+    lastUpdated: '2025-01-14',
+    author: 'Event Coordinator',
+    path: '/data/events.md'
+  },
+  'event-2': {
+    id: 'event-2',
+    name: 'Quarterly All-Hands',
+    type: 'event',
+    lastUpdated: '2025-01-13',
+    author: 'Event Coordinator',
+    path: '/data/events.md'
+  },
+  'event-3': {
+    id: 'event-3',
+    name: 'Holiday Party',
+    type: 'event',
+    lastUpdated: '2025-01-12',
+    author: 'Event Coordinator',
+    path: '/data/events.md'
+  },
+
+  // Documents (matching API IDs)
+  'document-3': {
+    id: 'document-3',
+    name: '員工手冊',
+    type: 'document',
+    lastUpdated: '2025-01-14',
+    author: 'HR Department',
+    path: '/documents/employee-handbook'
+  },
+  'document-7': {
+    id: 'document-7',
+    name: '員工常見問題',
+    type: 'faq',
+    lastUpdated: '2025-01-13',
+    author: 'HR Department',
+    path: '/documents/employee-faq'
+  },
+  'document-8': {
+    id: 'document-8',
+    name: '新員工指南',
+    type: 'guide',
+    lastUpdated: '2025-01-12',
+    author: 'HR Department',
+    path: '/documents/new-employee-guide'
+  },
+  'document-6': {
+    id: 'document-6',
+    name: '專案提案模板',
+    type: 'document',
+    lastUpdated: '2025-04-01',
+    author: 'Project Management',
+    path: '/documents/project-template'
+  },
+  'document-4': {
+    id: 'document-4',
+    name: '產品路線圖',
+    type: 'document',
+    lastUpdated: '2025-01-13',
+    author: 'Product Team',
+    path: '/documents/product-roadmap'
+  },
+
   // Life in Wisesemi
   'employee-activities': {
     id: 'employee-activities',
@@ -140,7 +244,8 @@ export const contentRegistry: Record<string, ContentMetadata> = {
     author: 'HR Department',
     path: 'http://mywisesemi.photo.wisesemi.com/'
   },
-  // Announcements and Events with recent updates
+
+  // Legacy entries for backward compatibility
   'announcements': {
     id: 'announcements',
     name: 'Company Announcements',
@@ -157,7 +262,6 @@ export const contentRegistry: Record<string, ContentMetadata> = {
     author: 'Event Coordinator',
     path: '/data/events.md'
   },
-  // Shared Documents with some recent updates
   'marketing-assets': {
     id: 'marketing-assets',
     name: 'Marketing Assets',
@@ -276,3 +380,4 @@ export const contentService = {
     return Object.values(contentRegistry);
   }
 };
+
