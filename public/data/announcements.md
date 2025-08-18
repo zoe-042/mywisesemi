@@ -1,7 +1,11 @@
 
 # Company Announcements
-## Last update: Aug. 11
+## Last update: Aug. 18
 ---
+## HR 通知
+**Date: 2025-08-18**
+[📄 Wisesem 組織圖](./documents/智騰_組織圖.pdf)
+
 ## HR 通知
 **Date: 2025-08-11**
 [📄 員工日月潭旅遊詳細行程](./sunmoonlake.pdf)
