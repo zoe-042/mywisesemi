@@ -19,7 +19,7 @@ const documentsData: Document[] = [
   { id: 3, name: '員工手冊', type: 'document', path: '/documents/employee-handbook' },
   { id: 7, name: '員工常見問題', type: 'faq', path: '/documents/employee-faq' },
   { id: 8, name: '新員工指南', type: 'guide', path: '/documents/new-employee-guide' },
-  { id: 6, name: '專案提案模板', type: 'document', path: '/documents/project-template' },
+  { id: 6, name: '公司組織圖', type: 'document', path: '/documents/orgchart' },
   { id: 4, name: '產品路線圖', type: 'document', path: '/documents/product-roadmap' },
 ];
 
