@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Utensils, FileBox, CalendarDays, Mail, HardDrive, MessageSquare, Calendar } from 'lucide-react';
+import { Utensils, FileBox, CalendarDays, Mail, HardDrive, MessageSquare, Calendar, StickyNote } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useLanguage } from '@/contexts/LanguageContext';
 
@@ -18,6 +18,8 @@ const getIcon = (type: string) => {
       return <Calendar className="h-4 w-4 mr-2 text-purple-500" />;
     case 'chat':
       return <MessageSquare className="h-4 w-4 mr-2 text-indigo-500" />;
+    case 'note':
+      return <StickyNote className="h-4 w-4 mr-2 text-yellow-500" />;
     default:
       return <CalendarDays className="h-4 w-4 mr-2 text-blue-500" />;
   }
@@ -62,6 +64,12 @@ const DailyTools = () => {
       name: language === 'zh' ? '智騰聊天' : 'WiseSemi Chat',
       type: 'chat',
       path: 'https://172.16.0.253/wschat'
+    },
+    {
+      id: 7,
+      name: language === 'zh' ? '智騰筆記' : 'WiseSemi Note',
+      type: 'note',
+      path: 'https://172.16.0.253/wsnote'
     }
   ];
 
