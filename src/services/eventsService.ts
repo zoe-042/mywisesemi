@@ -59,21 +59,35 @@ export const eventsService = {
 
   formatDate(dateStr: string): string {
     // Handle various date formats and convert to YYYY-MM-DD
-    if (dateStr.includes('Oct')) {
-      return '2025-10-02';
-    } else if (dateStr.includes('Sep')) {
-      return '2025-09-13';
-    } else if (dateStr.includes('June')) {
-      return '2025-06-30';
-    } else if (dateStr.includes('May')) {
-      return '2025-05-09';
-    } else if (dateStr.includes('March')) {
-      return '2025-03-20';
-    } else if (dateStr.includes('Jan') && dateStr.includes('20')) {
-      return '2025-01-20';
-    } else if (dateStr.includes('Jan') && dateStr.includes('07')) {
-      return '2025-01-07';
+    const monthMap: { [key: string]: string } = {
+      'Jan': '01', 'January': '01',
+      'Feb': '02', 'February': '02',
+      'Mar': '03', 'March': '03',
+      'Apr': '04', 'April': '04',
+      'May': '05',
+      'Jun': '06', 'June': '06',
+      'Jul': '07', 'July': '07',
+      'Aug': '08', 'August': '08',
+      'Sep': '09', 'September': '09',
+      'Oct': '10', 'October': '10',
+      'Nov': '11', 'November': '11',
+      'Dec': '12', 'December': '12'
+    };
+
+    // Try to parse the date string
+    const dateRegex = /(\w+)\.?\s+(\d{1,2})(?:\/(\d{1,2}))?,?\s+(\d{4})/;
+    const match = dateStr.match(dateRegex);
+    
+    if (match) {
+      const [, monthStr, day1, day2, year] = match;
+      const month = monthMap[monthStr];
+      const day = day2 || day1; // Handle cases like "Sep. 13/14" - use first day
+      
+      if (month) {
+        return `${year}-${month}-${day.padStart(2, '0')}`;
+      }
     }
+    
     return dateStr;
   }
 };
