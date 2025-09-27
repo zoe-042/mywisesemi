@@ -21,10 +21,10 @@ const ChineseIndex = () => {
       
       <main className="flex-1 container mx-auto px-4 py-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {/* Left Column - Departments, ISO 9001, Life in Wisesemi */}
+          {/* Left Column - Departments, Shared Documents, Life in Wisesemi */}
           <div className="flex flex-col space-y-6">
             <DepartmentsList />
-            <ISODocuments />
+            <SharedDocuments />
             <LifeInWisesemi />
           </div>
           
@@ -38,7 +38,7 @@ const ChineseIndex = () => {
             </div>
           </div>
           
-          {/* Right Column - Calendar, Daily Tools and Shared Documents */}
+          {/* Right Column - Calendar, Daily Tools and ISO 9001 */}
           <div className="flex flex-col space-y-6">
             <div>
               <TopCalendar />
@@ -47,7 +47,7 @@ const ChineseIndex = () => {
               <DailyTools />
             </div>
             <div className="flex-1">
-              <SharedDocuments />
+              <ISODocuments />
             </div>
           </div>
         </div>
