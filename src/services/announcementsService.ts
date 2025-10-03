@@ -18,6 +18,7 @@ export const announcementsService = {
     
     for (let i = 0; i < lines.length; i++) {
       const line = lines[i].trim();
+      const raw = lines[i];
       
       if (line.startsWith('## ') && !line.includes('Company Announcements')) {
         // Save previous announcement if it exists
@@ -42,12 +43,12 @@ export const announcementsService = {
         currentAnnouncement.date = datePart;
         currentAnnouncement.important = false;
         collectingDescription = true;
-      } else if (line && !line.startsWith('#') && collectingDescription && currentAnnouncement.title) {
-        // Collect description lines
+      } else if (collectingDescription && currentAnnouncement.title) {
+        // Collect description lines preserving line breaks
         if (currentAnnouncement.description) {
-          currentAnnouncement.description += ' ' + line;
+          currentAnnouncement.description += '\n' + raw;
         } else {
-          currentAnnouncement.description = line;
+          currentAnnouncement.description = raw;
         }
       }
     }

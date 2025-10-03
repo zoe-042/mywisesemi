@@ -48,7 +48,7 @@ const AnnouncementItem = ({ announcement }: { announcement: Announcement }) => {
                 {children}
               </a>
             ),
-            p: ({ children }) => <span>{children}</span>
+            p: ({ children }) => <p className="whitespace-pre-line">{children}</p>
           }}
         >
           {announcement.description}
