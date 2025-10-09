@@ -1,5 +1,6 @@
 
 import React, { createContext, useContext, useState, ReactNode, useEffect } from 'react';
+import { manualBadgeService } from '@/services/manualBadgeService';
 
 export interface NewContentConfig {
   // General Settings
@@ -74,15 +75,33 @@ export const ConfigurationProvider = ({ children }: { children: ReactNode }) => 
   // Load configuration from localStorage on mount
   useEffect(() => {
     try {
-      const stored = localStorage.getItem(STORAGE_KEY);
-      if (stored) {
-        const parsedConfig = JSON.parse(stored);
+      const savedConfig = localStorage.getItem('newContentConfig');
+      if (savedConfig) {
+        const parsedConfig = JSON.parse(savedConfig);
         setConfig({ ...defaultConfig, ...parsedConfig });
       }
     } catch (error) {
       console.error('Failed to load configuration:', error);
     }
   }, []);
+
+  // Load manual badges from JSON file when manual mode is enabled
+  useEffect(() => {
+    if (config.manualMode) {
+      manualBadgeService.fetchManualBadges().then(badges => {
+        setConfig(prev => ({ ...prev, manualBadges: badges }));
+      });
+
+      // Refresh badges periodically
+      const interval = setInterval(() => {
+        manualBadgeService.fetchManualBadges().then(badges => {
+          setConfig(prev => ({ ...prev, manualBadges: badges }));
+        });
+      }, 30000); // Refresh every 30 seconds
+
+      return () => clearInterval(interval);
+    }
+  }, [config.manualMode]);
 
   // Save configuration to localStorage whenever it changes
   useEffect(() => {

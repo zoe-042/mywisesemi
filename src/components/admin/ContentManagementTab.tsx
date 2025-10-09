@@ -7,7 +7,6 @@ import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
 import { useConfiguration } from '@/contexts/ConfigurationContext';
 import { contentService, ContentMetadata } from '@/services/contentService';
-import { Trash2, RotateCcw, CheckCircle } from 'lucide-react';
 
 const ContentManagementTab = () => {
   const { config, updateConfig } = useConfiguration();
@@ -44,35 +43,6 @@ const ContentManagementTab = () => {
 
   const handleManualModeToggle = (enabled: boolean) => {
     updateConfig({ manualMode: enabled });
-  };
-
-  const handleBadgeToggle = (contentId: string, enabled: boolean) => {
-    updateConfig({
-      manualBadges: {
-        ...config.manualBadges,
-        [contentId]: enabled
-      }
-    });
-  };
-
-  const handleMarkAllAsNew = (contentType: string) => {
-    const newBadges = { ...config.manualBadges };
-    contentByType[contentType].forEach(item => {
-      newBadges[item.id] = true;
-    });
-    updateConfig({ manualBadges: newBadges });
-  };
-
-  const handleClearAllNew = (contentType: string) => {
-    const newBadges = { ...config.manualBadges };
-    contentByType[contentType].forEach(item => {
-      newBadges[item.id] = false;
-    });
-    updateConfig({ manualBadges: newBadges });
-  };
-
-  const handleClearAllManualSettings = () => {
-    updateConfig({ manualBadges: {} });
   };
 
   const getTypeDisplayName = (type: string) => {
@@ -126,9 +96,10 @@ const ContentManagementTab = () => {
           </div>
           
           {config.manualMode && (
-            <div className="p-3 bg-blue-50 rounded-lg border border-blue-200">
-              <p className="text-sm text-blue-800">
-                Manual mode is enabled. Badge visibility is controlled by the toggles below instead of automatic date detection.
+            <div className="p-3 bg-blue-50 dark:bg-blue-950 rounded-lg border border-blue-200 dark:border-blue-800">
+              <p className="text-sm text-blue-800 dark:text-blue-200">
+                <strong>Read-Only Mode:</strong> Manual badges are controlled by editing <code className="bg-blue-100 dark:bg-blue-900 px-1 rounded">/public/data/manual-badges.json</code> on the server.
+                The file is checked every 30 seconds for updates.
               </p>
             </div>
           )}
@@ -148,55 +119,27 @@ const ContentManagementTab = () => {
           <CardHeader>
             <div className="flex items-center justify-between">
               <div>
-                <CardTitle>Manual Badge Settings</CardTitle>
+                <CardTitle>Manual Badge Settings (Read-Only)</CardTitle>
                 <CardDescription>
-                  Toggle "New" badges for individual content items.
+                  Current badge status from server. Edit <code>/public/data/manual-badges.json</code> to change.
                 </CardDescription>
               </div>
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={handleClearAllManualSettings}
-                className="flex items-center gap-2"
-              >
-                <Trash2 className="h-4 w-4" />
-                Clear All
-              </Button>
             </div>
           </CardHeader>
           <CardContent>
             <div className="space-y-6">
               {sortedTypes.map((type) => (
                 <div key={type} className="space-y-3">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      <h4 className="font-medium text-sm">
-                        {getTypeDisplayName(type)}
-                      </h4>
-                      <Badge variant="outline" className="text-xs">
-                        {contentByType[type].length} items
-                      </Badge>
-                    </div>
-                    <div className="flex gap-2">
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        onClick={() => handleMarkAllAsNew(type)}
-                        className="text-xs"
-                      >
-                        <CheckCircle className="h-3 w-3 mr-1" />
-                        All New
-                      </Button>
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        onClick={() => handleClearAllNew(type)}
-                        className="text-xs"
-                      >
-                        <RotateCcw className="h-3 w-3 mr-1" />
-                        Clear All
-                      </Button>
-                    </div>
+                  <div className="flex items-center gap-2">
+                    <h4 className="font-medium text-sm">
+                      {getTypeDisplayName(type)}
+                    </h4>
+                    <Badge variant="outline" className="text-xs">
+                      {contentByType[type].length} items
+                    </Badge>
+                    <Badge variant="secondary" className="text-xs">
+                      {contentByType[type].filter(item => isManuallyEnabled(item.id)).length} marked NEW
+                    </Badge>
                   </div>
                   
                   <div className="grid gap-3">
@@ -223,10 +166,10 @@ const ContentManagementTab = () => {
                         <div className="flex items-center space-x-2 ml-4">
                           <Switch
                             checked={isManuallyEnabled(item.id)}
-                            onCheckedChange={(checked) => handleBadgeToggle(item.id, checked)}
+                            disabled
                           />
-                          <Label className="text-xs text-gray-600">
-                            New
+                          <Label className="text-xs text-muted-foreground">
+                            {isManuallyEnabled(item.id) ? 'NEW' : 'Not New'}
                           </Label>
                         </div>
                       </div>
