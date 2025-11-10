@@ -31,7 +31,7 @@
 ### 公司工具
 
 - 電子郵件：Synology Web Mail
-- 即時通訊：
+- 即時通訊: Snology Chat
 - 專案管理：
 - 文件共享：
 
