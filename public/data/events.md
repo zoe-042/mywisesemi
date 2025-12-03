@@ -1,5 +1,10 @@
 # Upcoming Events
 
+## 2026 智騰尾牙
+**Date: Jan 30, 2026**
+**Time: 17:30**
+**Location: 神祕地點**
+
 ## 2025 中秋烤肉
 **Date: Oct 02, 2025**
 **Time: 17:30**
