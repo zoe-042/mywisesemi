@@ -67,30 +67,41 @@ const ConfigurationContext = createContext<ConfigurationContextType | undefined>
 
 const STORAGE_KEY = 'wisesemi-new-content-config';
 
-export const ConfigurationProvider = ({ children }: { children: ReactNode }) => {
-  const [config, setConfig] = useState<NewContentConfig>(defaultConfig);
-
-  // Load configuration from localStorage on mount
-  useEffect(() => {
-    try {
-      const savedConfig = localStorage.getItem(STORAGE_KEY);
-      if (savedConfig) {
-        const parsedConfig = JSON.parse(savedConfig);
-        setConfig({ ...defaultConfig, ...parsedConfig });
-      }
-    } catch (error) {
-      console.error('Failed to load configuration:', error);
+// Load initial config from localStorage synchronously to avoid race conditions
+const loadInitialConfig = (): NewContentConfig => {
+  try {
+    const savedConfig = localStorage.getItem(STORAGE_KEY);
+    if (savedConfig) {
+      const parsedConfig = JSON.parse(savedConfig);
+      console.log('Loaded config from localStorage:', parsedConfig);
+      return { ...defaultConfig, ...parsedConfig };
     }
+  } catch (error) {
+    console.error('Failed to load configuration:', error);
+  }
+  return defaultConfig;
+};
+
+export const ConfigurationProvider = ({ children }: { children: ReactNode }) => {
+  const [config, setConfig] = useState<NewContentConfig>(loadInitialConfig);
+  const [isInitialized, setIsInitialized] = useState(false);
+
+  // Mark as initialized after first render
+  useEffect(() => {
+    setIsInitialized(true);
   }, []);
 
-  // Save configuration to localStorage whenever it changes
+  // Save configuration to localStorage whenever it changes (but not on initial load)
   useEffect(() => {
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(config));
-    } catch (error) {
-      console.error('Failed to save configuration:', error);
+    if (isInitialized) {
+      try {
+        console.log('Saving config to localStorage:', config);
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(config));
+      } catch (error) {
+        console.error('Failed to save configuration:', error);
+      }
     }
-  }, [config]);
+  }, [config, isInitialized]);
 
   const updateConfig = (updates: Partial<NewContentConfig>) => {
     setConfig(prev => ({
