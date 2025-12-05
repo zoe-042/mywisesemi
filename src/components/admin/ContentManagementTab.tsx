@@ -45,6 +45,16 @@ const ContentManagementTab = () => {
     updateConfig({ manualMode: enabled });
   };
 
+  const handleBadgeToggle = (contentId: string, enabled: boolean) => {
+    const newManualBadges = { ...config.manualBadges };
+    if (enabled) {
+      newManualBadges[contentId] = true;
+    } else {
+      delete newManualBadges[contentId];
+    }
+    updateConfig({ manualBadges: newManualBadges });
+  };
+
   const getTypeDisplayName = (type: string) => {
     const typeNames: Record<string, string> = {
       department: 'Departments',
@@ -98,15 +108,14 @@ const ContentManagementTab = () => {
           {config.manualMode && (
             <div className="p-3 bg-blue-50 dark:bg-blue-950 rounded-lg border border-blue-200 dark:border-blue-800">
               <p className="text-sm text-blue-800 dark:text-blue-200">
-                <strong>Read-Only Mode:</strong> Manual badges are controlled by editing <code className="bg-blue-100 dark:bg-blue-900 px-1 rounded">/public/data/manual-badges.json</code> on the server.
-                The file is checked every 30 seconds for updates.
+                <strong>Manual Mode:</strong> Toggle the switches below to mark items as NEW. Settings are saved to browser storage.
               </p>
             </div>
           )}
 
           {!config.manualMode && (
-            <div className="p-3 bg-gray-50 rounded-lg border border-gray-200">
-              <p className="text-sm text-gray-700">
+            <div className="p-3 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
+              <p className="text-sm text-gray-700 dark:text-gray-300">
                 Automatic mode is enabled. Badges appear based on content update dates and user viewing history.
               </p>
             </div>
@@ -119,9 +128,9 @@ const ContentManagementTab = () => {
           <CardHeader>
             <div className="flex items-center justify-between">
               <div>
-                <CardTitle>Manual Badge Settings (Read-Only)</CardTitle>
+                <CardTitle>Manual Badge Settings</CardTitle>
                 <CardDescription>
-                  Current badge status from server. Edit <code>/public/data/manual-badges.json</code> to change.
+                  Toggle switches to mark items as NEW. Changes take effect immediately.
                 </CardDescription>
               </div>
             </div>
@@ -146,7 +155,11 @@ const ContentManagementTab = () => {
                     {contentByType[type].map((item) => (
                       <div
                         key={item.id}
-                        className="flex items-center justify-between p-3 border rounded-lg bg-gray-50"
+                        className={`flex items-center justify-between p-3 border rounded-lg transition-colors ${
+                          isManuallyEnabled(item.id) 
+                            ? 'bg-red-50 dark:bg-red-950 border-red-200 dark:border-red-800' 
+                            : 'bg-gray-50 dark:bg-gray-800'
+                        }`}
                       >
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center gap-2">
@@ -159,16 +172,16 @@ const ContentManagementTab = () => {
                               </Badge>
                             )}
                           </div>
-                          <p className="text-xs text-gray-500 mt-1">
-                            ID: {item.id} • Updated: {item.lastUpdated} • Author: {item.author}
+                          <p className="text-xs text-muted-foreground mt-1">
+                            ID: {item.id}
                           </p>
                         </div>
                         <div className="flex items-center space-x-2 ml-4">
                           <Switch
                             checked={isManuallyEnabled(item.id)}
-                            disabled
+                            onCheckedChange={(checked) => handleBadgeToggle(item.id, checked)}
                           />
-                          <Label className="text-xs text-muted-foreground">
+                          <Label className="text-xs text-muted-foreground min-w-[50px]">
                             {isManuallyEnabled(item.id) ? 'NEW' : 'Not New'}
                           </Label>
                         </div>
