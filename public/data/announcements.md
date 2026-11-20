@@ -1,7 +1,11 @@
 
 # Company Announcements
-## Last update: 2026-09-22
+## Last update: 2026-11-20
 ---
+## HR 通知
+**Date: 2026-11-20**
+更新組織表,請參考共享文件->公司組織圖。
+
 ## HR 通知
 **Date: 2026-09-22**
 停用Ragic 請假系統。
